@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Glowing background sparkle -->
+  <path d="M50 5 L55 35 L85 40 L55 45 L50 75 L45 45 L15 40 L45 35 Z" fill="#E8000D"/>
+  <circle cx="50" cy="40" r="18" fill="#0A0A0A" stroke="#C0C0C0" stroke-width="1.5"/>
+  <text x="50" y="48" font-family="'Rajdhani', sans-serif" font-size="24" font-weight="bold" fill="#F5F5F5" text-anchor="middle">X</text>
+</svg>

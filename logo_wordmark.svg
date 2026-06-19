@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 120" fill="none">
+  <defs>
+    <linearGradient id="silver-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#E8E8E8" />
+      <stop offset="100%" stop-color="#A5A5A5" />
+    </linearGradient>
+  </defs>
+  <!-- Stylized Wordmark using beautiful font-style shapes (path) or standard system sans-serif fonts so it renders correctly -->
+  <g transform="translate(10, 10)">
+    <!-- Let's write SHINE X CAR SPA -->
+    <text x="0" y="80" font-family="'Bebas Neue', cursive, sans-serif" font-size="96" font-weight="900" fill="url(#silver-grad)" letter-spacing="4">SHINE</text>
+    <text x="320" y="80" font-family="'Bebas Neue', cursive, sans-serif" font-size="110" font-weight="900" fill="#E8000D" letter-spacing="2">X</text>
+    <text x="400" y="80" font-family="'Bebas Neue', cursive, sans-serif" font-size="96" font-weight="900" fill="url(#silver-grad)" letter-spacing="4">CAR SPA</text>
+    
+    <!-- Mini sparkle star details -->
+    <path d="M375 5 L377 15 L387 17 L377 19 L375 29 L373 19 L363 17 L373 15 Z" fill="#E8000D"/>
+  </g>
+</svg>

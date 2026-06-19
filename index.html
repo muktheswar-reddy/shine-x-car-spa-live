@@ -1,0 +1,2618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="fasttracks_icon.png" />
+  <link rel="apple-touch-icon" href="fasttracks_icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Shine X Car Spa — India's Biggest Instant Car Modification Studio. Based in Marathahalli, Bengaluru. PPF, Book Now, Custom Audio, Detailing & more." />
+  <title>Shine X Car Spa | India's Biggest Car Modification Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@700&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & BASE ─────────────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black:   #0A0A0A;
+      --black2:  #111111;
+      --black3:  #181818;
+      --red:     #E8000D;
+      --red-dim: #a00009;
+      --silver:  #C0C0C0;
+      --white:   #F5F5F5;
+      --gray:    #888888;
+      --bebas:   'Bebas Neue', cursive;
+      --inter:   'Schibsted Grotesk', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--inter);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection { background: var(--red); color: #fff; }
+
+    a { text-decoration: none; color: inherit; }
+
+    img { max-width: 100%; display: block; }
+
+    /* ─── SCROLLBAR ────────────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--red); border-radius: 3px; }
+
+    /* ─── UTILITY ──────────────────────────────────────────────────────── */
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      font-family: var(--inter);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .section-heading {
+      font-family: var(--bebas);
+      font-size: clamp(40px, 6vw, 72px);
+      letter-spacing: 2px;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .red-text { color: var(--red); }
+
+    /* ─── SCROLL REVEAL ────────────────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ─── BUTTONS ──────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      font-family: var(--inter);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.08);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .btn:hover::after { opacity: 1; }
+
+    .btn-red {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+    .btn-red:hover {
+      background: #ff1a24;
+      border-color: #ff1a24;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(232,0,13,0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border-color: var(--silver);
+    }
+    .btn-outline:hover {
+      border-color: var(--red);
+      color: var(--red);
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+      border-color: #25D366;
+      animation: waPulse 2.2s ease-in-out infinite;
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+      animation: none;
+      box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+    }
+
+    @keyframes waPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+      50%       { box-shadow: 0 0 0 14px rgba(37,211,102,0); }
+    }
+
+    /* ════════════════════════════════════════════════════════════════════
+       NAV
+    ════════════════════════════════════════════════════════════════════ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s ease, padding 0.4s ease, border-bottom 0.4s ease;
+    }
+    #navbar.scrolled {
+      background: rgba(10,10,10,0.97);
+      padding: 14px 40px;
+      border-bottom: 2px solid var(--red);
+      backdrop-filter: blur(8px);
+    }
+
+    /* ── LOGO SHARED STYLES ─────────────────────── */
+    .ft-logo-img {
+      display: block;
+    }
+
+    .nav-logo {
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s;
+    }
+    .nav-logo .ft-logo-img {
+      height: 36px;
+      width: auto;
+    }
+    #navbar.scrolled .nav-logo .ft-logo-img { height: 28px; }
+
+    /* ────────────────────────────────────────────── */
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--silver);
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--red);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--red);
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 3px;
+      font-weight: 700 !important;
+      letter-spacing: 1.5px !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: #ff1a24 !important; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px; height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10,10,10,0.98);
+      z-index: 999;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: var(--bebas);
+      font-size: 48px;
+      letter-spacing: 4px;
+      color: var(--white);
+      transition: color 0.3s;
+    }
+    .mobile-nav a:hover { color: var(--red); }
+
+    /* ════════════════════════════════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════════════════════════════════ */
+    #home {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    /* Lamborghini airflow canvas */
+    /* Speed streak lines */
+    .hero-streaks {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .streak {
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+      opacity: 0;
+      animation: streak-move 3s linear infinite;
+    }
+    .streak:nth-child(1)  { top: 20%; width: 60%;  left: -60%; animation-delay: 0s;    animation-duration: 2.2s; opacity: 0.6; }
+    .streak:nth-child(2)  { top: 35%; width: 40%;  left: -40%; animation-delay: 0.4s;  animation-duration: 1.8s; opacity: 0.4; }
+    .streak:nth-child(3)  { top: 50%; width: 80%;  left: -80%; animation-delay: 0.8s;  animation-duration: 2.5s; opacity: 0.7; height: 2px; }
+    .streak:nth-child(4)  { top: 65%; width: 50%;  left: -50%; animation-delay: 1.2s;  animation-duration: 2.0s; opacity: 0.5; }
+    .streak:nth-child(5)  { top: 78%; width: 70%;  left: -70%; animation-delay: 0.2s;  animation-duration: 2.8s; opacity: 0.3; }
+    .streak:nth-child(6)  { top: 42%; width: 90%;  left: -90%; animation-delay: 1.6s;  animation-duration: 1.6s; opacity: 0.8; height: 2px; }
+    .streak:nth-child(7)  { top: 58%; width: 35%;  left: -35%; animation-delay: 2.0s;  animation-duration: 2.2s; opacity: 0.4; }
+    .streak:nth-child(8)  { top: 88%; width: 55%;  left: -55%; animation-delay: 0.6s;  animation-duration: 2.0s; opacity: 0.5; }
+    .streak:nth-child(9)  { top: 12%; width: 45%;  left: -45%; animation-delay: 1.0s;  animation-duration: 3.0s; opacity: 0.3; }
+    .streak:nth-child(10) { top: 70%; width: 65%;  left: -65%; animation-delay: 1.8s;  animation-duration: 1.9s; opacity: 0.6; }
+
+    @keyframes streak-move {
+      0%   { transform: translateX(0);      opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 1; }
+      100% { transform: translateX(200vw);  opacity: 0; }
+    }
+
+    /* Diagonal red glow line through hero */
+    .hero-glow-line {
+      position: absolute;
+      top: 50%; left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--red) 20%, rgba(232,0,13,0.6) 50%, var(--red) 80%, transparent 100%);
+      transform: rotate(-4deg) translateY(-50%);
+      filter: blur(1px);
+      animation: glowPulse 3s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.3; filter: blur(1px); }
+      50%       { opacity: 0.8; filter: blur(0px) drop-shadow(0 0 8px var(--red)); }
+    }
+
+    /* Particle dots */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: var(--red);
+      border-radius: 50%;
+      animation: particleDrift linear infinite;
+      opacity: 0;
+    }
+    @keyframes particleDrift {
+      0%   { transform: translate(0, 0) scale(0); opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 0.6; }
+      100% { transform: translate(var(--dx), var(--dy)) scale(1.5); opacity: 0; }
+    }
+
+    /* Hero content */
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 0 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .hero-eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--silver);
+      opacity: 0;
+      animation: fadeSlideUp 0.8s ease forwards;
+      animation-delay: 0.2s;
+      margin-bottom: 10px;
+    }
+
+    .hero-logo {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: heroTitleIn 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+      animation-delay: 0.4s;
+    }
+    .hero-logo .ft-logo-img {
+      width: 100%;
+      height: auto;
+      filter: invert(1) hue-rotate(180deg) brightness(0.58) saturate(2.2) contrast(1.1)
+              drop-shadow(4px 6px 0 rgba(60,0,0,0.8)) drop-shadow(0 0 50px rgba(132,46,54,0.4));
+    }
+
+    .hero-sub {
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: clamp(18px, 4vw, 46px);
+      color: var(--silver);
+      letter-spacing: 16px;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeSlideUp 0.8s ease forwards;
+      animation-delay: 0.9s;
+      margin-top: 4px;
+    }
+
+    .hero-divider {
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+      margin: 24px auto;
+      animation: expandLine 0.8s ease forwards;
+      animation-delay: 1.2s;
+    }
+    @keyframes expandLine {
+      to { width: 300px; }
+    }
+
+    .hero-tagline {
+      font-size: clamp(12px, 2vw, 15px);
+      font-weight: 400;
+      color: var(--silver);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeSlideUp 0.8s ease forwards;
+      animation-delay: 1.4s;
+      margin-bottom: 48px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeSlideUp 0.8s ease forwards;
+      animation-delay: 1.7s;
+    }
+
+    @keyframes heroTitleIn {
+      0%   { opacity: 0; transform: translateY(50px) scale(0.85); }
+      65%  { opacity: 1; transform: translateY(-6px) scale(1.01); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 0;
+      animation: fadeSlideUp 0.8s ease forwards 2.2s;
+      cursor: pointer;
+    }
+    .scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .scroll-mouse {
+      width: 24px; height: 38px;
+      border: 2px solid var(--gray);
+      border-radius: 12px;
+      position: relative;
+    }
+    .scroll-mouse::after {
+      content: '';
+      position: absolute;
+      top: 6px; left: 50%;
+      transform: translateX(-50%);
+      width: 3px; height: 8px;
+      background: var(--red);
+      border-radius: 2px;
+      animation: scrollDown 1.6s ease-in-out infinite;
+    }
+    @keyframes scrollDown {
+      0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(14px); }
+    }
+
+    /* Hero fade on scroll — handled via JS opacity */
+    #home { transition: opacity 0.1s linear; }
+
+    /* ════════════════════════════════════════════════════════════════════
+       ABOUT / LEGACY
+    ════════════════════════════════════════════════════════════════════ */
+    #about {
+      padding: 120px 0;
+      background: var(--black2);
+      position: relative;
+    }
+    #about::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, transparent, var(--red) 20%, var(--red) 80%, transparent);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--silver);
+      margin-top: 20px;
+    }
+
+    .about-text .section-heading { margin-bottom: 6px; }
+
+    /* Stats grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .stat-card {
+      background: var(--black3);
+      border: 1px solid #222;
+      border-top: 3px solid var(--red);
+      padding: 28px 24px;
+      border-radius: 4px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(232,0,13,0.15);
+    }
+
+    .stat-number {
+      font-family: var(--bebas);
+      font-size: 56px;
+      color: var(--red);
+      line-height: 1;
+      letter-spacing: 2px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--silver);
+      margin-top: 6px;
+    }
+
+    /* ════════════════════════════════════════════════════════════════════
+       SERVICES
+    ════════════════════════════════════════════════════════════════════ */
+    #services {
+      padding: 120px 0;
+      background: var(--black);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--black2);
+      border: 1px solid #1e1e1e;
+      border-top: 3px solid var(--red);
+      border-radius: 4px;
+      padding: 32px 28px;
+      position: relative;
+      cursor: default;
+      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.35s ease,
+                  border-color 0.35s ease;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      border: 1.5px solid transparent;
+      transition: border-color 0.35s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(232,0,13,0.18);
+      border-color: var(--red);
+    }
+    .service-card:hover::before { border-color: rgba(232,0,13,0.3); }
+
+    .service-icon {
+      font-size: 36px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .service-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: 0.3px;
+    }
+
+    .service-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .badge-popular {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--red);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+
+    /* ════════════════════════════════════════════════════════════════════
+       RECLINERS — STAR SERVICE
+    ════════════════════════════════════════════════════════════════════ */
+    #booking {
+      padding: 120px 0;
+      background: var(--black2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Edge glow */
+    #booking::before,
+    #booking::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 200px;
+      pointer-events: none;
+    }
+    #booking::before {
+      left: 0;
+      background: linear-gradient(90deg, rgba(232,0,13,0.12), transparent);
+    }
+    #booking::after {
+      right: 0;
+      background: linear-gradient(-90deg, rgba(232,0,13,0.12), transparent);
+    }
+
+    /* ════════════════════════════════════════════════════════════════════
+       BOOKING SECTION
+    ════════════════════════════════════════════════════════════════════ */
+    #booking {
+      padding: 100px 0;
+      background: var(--black);
+      border-top: 1px solid #1a1a1a;
+    }
+
+    .booking-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .booking-heading {
+      font-family: var(--bebas);
+      font-size: clamp(42px, 7vw, 80px);
+      letter-spacing: 4px;
+      line-height: 1;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .booking-heading span { color: var(--red); }
+
+    .booking-sub {
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 48px;
+      max-width: 580px;
+    }
+
+    /* Step Labels */
+    .bk-step {
+      margin-bottom: 36px;
+    }
+    .bk-step-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .bk-step-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(232,0,13,0.2);
+    }
+
+    /* Vehicle type pills */
+    .bk-vehicle-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .bk-pill {
+      cursor: pointer;
+      border: 1.5px solid #2a2a2a;
+      border-radius: 100px;
+      padding: 10px 22px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--silver);
+      background: var(--black3);
+      transition: border-color 0.25s, background 0.25s, color 0.25s, transform 0.2s;
+      user-select: none;
+    }
+    .bk-pill:hover { border-color: var(--red); color: var(--white); }
+    .bk-pill.selected {
+      border-color: var(--red);
+      background: rgba(226,3,8,0.12);
+      color: var(--white);
+      transform: scale(1.04);
+    }
+
+    /* Service select */
+    .bk-service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .bk-service-card {
+      cursor: pointer;
+      background: var(--black3);
+      border: 1.5px solid #222;
+      border-radius: 8px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: border-color 0.25s, background 0.25s, transform 0.2s;
+    }
+    .bk-service-card:hover { border-color: rgba(226,3,8,0.5); transform: translateY(-2px); }
+    .bk-service-card.selected {
+      border-color: var(--red);
+      background: rgba(226,3,8,0.1);
+      transform: translateY(-2px);
+    }
+    .bk-service-card .sc-icon { font-size: 22px; line-height: 1; flex-shrink: 0; }
+    .bk-service-card .sc-name { font-size: 13px; font-weight: 600; color: var(--white); line-height: 1.4; }
+
+    /* Date input */
+    .bk-date-input {
+      background: var(--black3);
+      border: 1.5px solid #2a2a2a;
+      border-radius: 8px;
+      color: var(--white);
+      font-size: 15px;
+      padding: 14px 18px;
+      width: 100%;
+      max-width: 320px;
+      outline: none;
+      transition: border-color 0.25s;
+      font-family: var(--sans);
+      color-scheme: dark;
+    }
+    .bk-date-input:focus { border-color: var(--red); }
+
+    /* Time slots */
+    .bk-slots-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .bk-slot {
+      cursor: pointer;
+      border: 1.5px solid #2a2a2a;
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--silver);
+      background: var(--black3);
+      transition: border-color 0.25s, background 0.25s, color 0.25s;
+      user-select: none;
+    }
+    .bk-slot:hover { border-color: var(--red); color: var(--white); }
+    .bk-slot.selected {
+      border-color: var(--red);
+      background: rgba(226,3,8,0.12);
+      color: var(--white);
+    }
+
+    /* Text inputs */
+    .bk-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+      min-width: 220px;
+    }
+    .bk-field label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .bk-field input,
+    .bk-field textarea {
+      background: var(--black3);
+      border: 1.5px solid #2a2a2a;
+      border-radius: 6px;
+      color: var(--white);
+      font-size: 14px;
+      padding: 12px 16px;
+      outline: none;
+      font-family: var(--sans);
+      transition: border-color 0.25s;
+      resize: none;
+    }
+    .bk-field input:focus,
+    .bk-field textarea:focus { border-color: var(--red); }
+    .bk-fields-row {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Submit */
+    .bk-submit {
+      margin-top: 44px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .bk-whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 18px 40px;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      font-family: var(--sans);
+      box-shadow: 0 0 0 rgba(37,211,102,0);
+    }
+    .bk-whatsapp-btn:hover {
+      background: #1ebe5d;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(37,211,102,0.3);
+    }
+    .bk-note {
+      font-size: 12px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* Success banner */
+    .bk-success {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+      animation: fadeInUp 0.5s ease;
+    }
+    .bk-success.show { display: block; }
+    .bk-success-icon {
+      font-size: 64px;
+      margin-bottom: 20px;
+      animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes popIn {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .bk-success h3 {
+      font-family: var(--bebas);
+      font-size: 40px;
+      letter-spacing: 3px;
+      color: #25d366;
+      margin-bottom: 12px;
+    }
+    .bk-success p {
+      font-size: 15px;
+      color: var(--silver);
+      line-height: 1.8;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 600px) {
+      .bk-service-grid { grid-template-columns: 1fr 1fr; }
+      .bk-slot { font-size: 12px; padding: 9px 14px; }
+    }
+
+    /* ════════════════════════════════════════════════════════════════════
+       SOCIAL PROOF
+    ════════════════════════════════════════════════════════════════════ */
+    #why {
+      padding: 100px 0;
+      background: var(--black);
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .why-item {
+      padding: 48px 40px;
+      text-align: center;
+      border-right: 1px solid #1a1a1a;
+      position: relative;
+    }
+    .why-item:last-child { border-right: none; }
+
+    .why-icon {
+      font-size: 40px;
+      color: var(--red);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    .why-title {
+      font-family: var(--bebas);
+      font-size: 26px;
+      letter-spacing: 1px;
+      color: var(--white);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .why-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ════════════════════════════════════════════════════════════════════
+       HOW TO BOOK
+    ════════════════════════════════════════════════════════════════════ */
+    #book {
+      padding: 120px 0;
+      background: var(--black2);
+    }
+
+    .book-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .steps-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+
+    .step {
+      flex: 1;
+      min-width: 200px;
+      max-width: 300px;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .step-number {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      font-family: var(--bebas);
+      font-size: 32px;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      position: relative;
+      box-shadow: 0 0 30px rgba(232,0,13,0.3);
+    }
+
+    .step-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    .step-arrow {
+      align-self: flex-start;
+      padding-top: 24px;
+      font-size: 28px;
+      color: var(--red);
+      opacity: 0.6;
+    }
+
+    .book-note {
+      text-align: center;
+      margin-top: 56px;
+      font-size: 13px;
+      color: var(--gray);
+      letter-spacing: 0.5px;
+    }
+    .book-note strong { color: var(--red); }
+
+    /* ════════════════════════════════════════════════════════════════════
+       CONTACT
+    ════════════════════════════════════════════════════════════════════ */
+    #contact {
+      padding: 120px 0;
+      background: var(--black);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .contact-heading {
+      margin-bottom: 40px;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-text {
+      font-size: 15px;
+      color: var(--silver);
+      line-height: 1.7;
+    }
+    .contact-text strong {
+      color: var(--white);
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+
+    .contact-text a {
+      color: var(--red);
+      transition: color 0.3s;
+    }
+    .contact-text a:hover { color: #ff3340; }
+
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      text-align: center;
+    }
+
+    .wa-big-text {
+      font-family: var(--bebas);
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: var(--silver);
+      line-height: 1.3;
+    }
+
+    .wa-number {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .map-link {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 8px;
+      display: block;
+      text-align: center;
+    }
+    .map-link a {
+      color: var(--red);
+      transition: color 0.3s;
+    }
+    .map-link a:hover { color: #ff3340; }
+
+    /* ════════════════════════════════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════════════════════════════════ */
+    #footer {
+      background: #050505;
+      border-top: 1px solid #1a1a1a;
+      padding: 56px 0 32px;
+      text-align: center;
+    }
+
+    /* ── FOUNDER CARD ───────────────────────────── */
+    .founder-card {
+      display: flex;
+      align-items: stretch;
+      gap: 28px;
+      background: var(--black3);
+      border: 1px solid #222;
+      border-left: 4px solid var(--red);
+      border-radius: 6px;
+      padding: 28px 32px;
+      margin-top: 56px;
+      width: 100%;
+      grid-column: 1 / -1;
+    }
+    .founder-avatar {
+      flex-shrink: 0;
+      width: 110px;
+      height: auto;
+      min-height: 160px;
+      border-radius: 4px;
+      background: linear-gradient(160deg, #2a0005 0%, #0f0f0f 100%);
+      border: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 30px;
+      color: var(--red);
+      letter-spacing: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    .founder-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .founder-info { flex: 1; min-width: 0; }
+    .founder-name {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+    .founder-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .founder-bio {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--silver);
+    }
+    .founder-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .founder-insta, .founder-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray);
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+    .founder-insta:hover, .founder-linkedin:hover { color: var(--white); }
+    .founder-insta svg, .founder-linkedin svg { flex-shrink: 0; }
+    @media (max-width: 600px) {
+      .founder-card   { flex-direction: column; align-items: center; text-align: center; padding: 24px 20px; width: 100%; }
+      .founder-avatar { width: 120px; height: 160px; }
+      .founder-links  { justify-content: center; }
+    }
+
+    /* ─── LIGHT MODE ───────────────────────────────────────────────────── */
+    body.light-mode {
+      --black:  #F2EFEC;
+      --black2: #E8E4E0;
+      --black3: #DDD9D5;
+      --silver: #505050;
+      --white:  #181818;
+      --gray:   #707070;
+      background: var(--black);
+      color: var(--white);
+    }
+    body.light-mode #navbar.scrolled {
+      background: rgba(242,239,236,0.97);
+      border-bottom-color: var(--red);
+    }
+    body.light-mode .mobile-nav {
+      background: rgba(242,239,236,0.98);
+    }
+    body.light-mode #home { background: var(--black); }
+    body.light-mode .ft-logo-img {
+      filter: invert(1) hue-rotate(180deg) drop-shadow(0 0 1px rgba(0,0,0,0.5));
+    }
+    body.light-mode .hero-logo .ft-logo-img {
+      mix-blend-mode: normal;
+    }
+    body.light-mode .service-card,
+    body.light-mode .stat-card,
+    body.light-mode .recliner-card,
+    body.light-mode .founder-card {
+      border-color: #ccc;
+    }
+    body.light-mode ::selection { background: var(--red); color: #fff; }
+    body.light-mode ::-webkit-scrollbar-track { background: var(--black); }
+
+    /* ─── THEME TOGGLE BUTTON ─────────────────────────────────────────── */
+    .theme-toggle {
+      width: 34px; height: 34px;
+      border: none; background: transparent;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--silver);
+      transition: color 0.3s, background 0.3s;
+      border-radius: 50%;
+      padding: 0; flex-shrink: 0;
+    }
+    .theme-toggle:hover { color: var(--white); }
+    .theme-toggle svg { width: 17px; height: 17px; }
+    .icon-sun  { display: none; }
+    .icon-moon { display: block; }
+    body.light-mode .icon-sun  { display: block; }
+    body.light-mode .icon-moon { display: none; }
+
+    .footer-logo {
+      margin: 0 auto 4px;
+    }
+    .footer-logo .ft-logo-img {
+      height: 48px;
+      width: auto;
+    }
+
+    .footer-tagline {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 8px;
+      margin-bottom: 32px;
+    }
+
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .social-btn {
+      width: 44px; height: 44px;
+      border: 1px solid #2a2a2a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: border-color 0.3s, transform 0.3s, background 0.3s;
+      color: var(--gray);
+    }
+    .social-btn:hover {
+      border-color: var(--red);
+      background: var(--red);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .footer-divider {
+      width: 60px;
+      height: 1px;
+      background: #222;
+      margin: 0 auto 24px;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: #444;
+      letter-spacing: 1px;
+    }
+
+    /* ════════════════════════════════════════════════════════════════════
+       FLOATING WHATSAPP
+    ════════════════════════════════════════════════════════════════════ */
+    .floating-wa {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 999;
+      width: 58px; height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.5);
+      animation: waPulse 2.2s ease-in-out infinite;
+      transition: transform 0.3s;
+    }
+    .floating-wa:hover {
+      transform: scale(1.12);
+      animation: none;
+      box-shadow: 0 6px 30px rgba(37,211,102,0.7);
+    }
+
+    /* ════════════════════════════════════════════════════════════════════
+       RESPONSIVE — full 7-breakpoint system
+       xl-desktop 1800+ | large-desktop 1400+ | desktop 1024-1399
+       tablet-land 769-1023 | tablet-port ≤768 | mobile ≤540 | xs ≤400
+    ════════════════════════════════════════════════════════════════════ */
+
+    /* ── XL / TV (1800px+) ───────────────────────────────────────────── */
+    @media (min-width: 1800px) {
+      .section-inner {
+        max-width: 1640px;
+        padding: 0 60px;
+      }
+      .hero-content  { max-width: 1680px; }
+      .hero-logo     { max-width: 1260px; }
+      .hero-eyebrow  { font-size: 16px; letter-spacing: 9px; }
+      .hero-sub      { letter-spacing: 22px; }
+      .hero-tagline  { font-size: 17px; margin-bottom: 60px; }
+
+      #about, #services, #booking, #book, #contact { padding: 160px 0; }
+
+      .section-heading { font-size: 88px; }
+      .section-label   { font-size: 13px; letter-spacing: 5px; }
+
+      .about-text p    { font-size: 18px; line-height: 2; }
+      .stat-number     { font-size: 76px; }
+      .stat-label      { font-size: 13px; letter-spacing: 3px; }
+      .stat-card       { padding: 36px 28px; }
+
+      .services-grid { grid-template-columns: repeat(4, 1fr); gap: 28px; }
+      .service-icon  { font-size: 44px; margin-bottom: 20px; }
+      .service-name  { font-size: 19px; }
+      .service-desc  { font-size: 14px; line-height: 1.8; }
+
+      .founder-card   { padding: 36px 40px; gap: 36px; }
+      .founder-avatar { width: 200px; min-height: 280px; }
+      .founder-name   { font-size: 28px; }
+      .founder-bio    { font-size: 16px; line-height: 2; }
+
+      .booking-sub  { max-width: 860px; font-size: 19px; }
+      .wa-number      { font-size: 36px; }
+      .wa-big-text    { font-size: 34px; }
+    }
+
+    /* ── Large Desktop (1400px – 1799px) ─────────────────────────────── */
+    @media (min-width: 1400px) and (max-width: 1799px) {
+      .section-inner { max-width: 1360px; padding: 0 40px; }
+      .hero-content  { max-width: 1400px; }
+      .hero-logo     { max-width: 1020px; }
+
+      .stat-number   { font-size: 64px; }
+      .stat-card     { padding: 32px 24px; }
+
+      .services-grid { grid-template-columns: repeat(4, 1fr); gap: 22px; }
+      .service-name  { font-size: 16px; }
+
+      .founder-avatar { width: 160px; min-height: 220px; }
+      .founder-name   { font-size: 24px; }
+    }
+
+    /* ── Tablet Landscape / Mid Desktop (769px – 1023px) ─────────────── */
+    @media (max-width: 1023px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid    { grid-template-columns: 1fr; gap: 56px; }
+      .why-grid      { grid-template-columns: 1fr; }
+      .why-item      { border-right: none; border-bottom: 1px solid #1a1a1a; }
+      .why-item:last-child { border-bottom: none; }
+      /* Stats go 4-across when about-grid is single column */
+      .stats-grid    { grid-template-columns: repeat(4, 1fr); }
+      .stat-number   { font-size: 48px; }
+    }
+
+    /* ── Tablet Portrait (max-width: 768px) ──────────────────────────── */
+    @media (max-width: 768px) {
+      #navbar        { padding: 16px 20px; }
+      #navbar.scrolled { padding: 12px 20px; }
+      .nav-links     { display: none; }
+      .hamburger     { display: flex; }
+
+      .section-inner { padding: 0 22px; }
+
+      .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .contact-grid  { grid-template-columns: 1fr; gap: 48px; }
+      .steps-row     { flex-direction: column; align-items: center; }
+      .step-arrow    { transform: rotate(90deg); padding: 0; }
+      /* Stats back to 2×2 on portrait tablet */
+      .stats-grid    { grid-template-columns: 1fr 1fr; }
+
+      .hero-sub      { letter-spacing: 8px; }
+
+      #about    { padding: 80px 0; }
+      #services { padding: 80px 0; }
+      #booking { padding: 80px 0; }
+      #book     { padding: 80px 0; }
+      #contact  { padding: 80px 0; }
+
+      .car-badges { padding: 0 10px; }
+    }
+
+    /* ── Mobile (max-width: 540px) ───────────────────────────────────── */
+    @media (max-width: 540px) {
+      .services-grid { grid-template-columns: 1fr; gap: 14px; }
+      .stat-number   { font-size: 48px; }
+      .stats-grid    { gap: 14px; }
+      .hero-sub      { letter-spacing: 5px; font-size: clamp(14px, 4vw, 20px); }
+      .section-inner { padding: 0 18px; }
+      .service-card  { padding: 24px 22px; }
+    }
+
+    /* ── Small Mobile (max-width: 420px) ─────────────────────────────── */
+    @media (max-width: 420px) {
+      .hero-buttons  { flex-direction: column; align-items: center; }
+      .btn           { width: 100%; max-width: 300px; justify-content: center; }
+      .hero-logo     { max-width: 320px; }
+      .stat-number   { font-size: 40px; }
+      .stats-grid    { gap: 10px; }
+      .section-inner { padding: 0 16px; }
+      #navbar        { padding: 14px 16px; }
+      #navbar.scrolled { padding: 10px 16px; }
+      .founder-card  { padding: 20px 16px; gap: 16px; }
+    }
+
+    /* ── Tiny phones (max-width: 360px) ──────────────────────────────── */
+    @media (max-width: 360px) {
+      .hero-logo     { max-width: 280px; }
+      .hero-eyebrow  { font-size: 10px; letter-spacing: 3px; }
+      .hero-sub      { letter-spacing: 3px; font-size: 13px; }
+      .stat-number   { font-size: 36px; }
+      .service-card  { padding: 20px 16px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- ─── TT LOGO SYMBOL (reused at all sizes) ─────────────────────────── -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="tt-spear" viewBox="0 0 200 145" fill="currentColor">
+    <!-- 4-pointed star at top center -->
+    <path d="M100,0 L105,10 L116,14 L105,18 L100,28 L95,18 L84,14 L95,10 Z" fill="currentColor"/>
+    <!-- Full crossbar -->
+    <rect x="0" y="22" width="200" height="14" fill="currentColor"/>
+    <!-- Left stem -->
+    <rect x="7" y="36" width="28" height="46" fill="currentColor"/>
+    <!-- Right stem -->
+    <rect x="165" y="36" width="28" height="46" fill="currentColor"/>
+    <!-- Centre downward spear -->
+    <path d="M87,36 L113,36 L110,62 L107,84 L104,104 L101,120 L100,138 L99,120 L96,104 L93,84 L90,62 Z" fill="currentColor"/>
+  </symbol>
+</svg>
+
+<!-- ─── FLOATING WHATSAPP ──────────────────────────────────────────────── -->
+<a href="https://wa.me/919916444888" target="_blank" rel="noopener" class="floating-wa" title="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ─── MOBILE NAV ──────────────────────────────────────────────────────── -->
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#home"     onclick="closeMobile()">Home</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#booking" onclick="closeMobile()">Book Now</a>
+  <a href="#about"    onclick="closeMobile()">About</a>
+  <a href="#contact"  onclick="closeMobile()">Contact</a>
+</nav>
+
+<!-- ─── NAVBAR ────────────────────────────────────────────────────────────── -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <img src="fasttracks_icon.png" alt="Shine X Car Spa" class="ft-logo-img" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#booking">Book Now</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://wa.me/919916444888" target="_blank" rel="noopener" class="nav-cta">DIRECT CONTACT</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SECTION 1 — HERO
+════════════════════════════════════════════════════════════════════════ -->
+<section id="home">
+  <!-- Speed streaks background -->
+  <div class="hero-streaks" aria-hidden="true">
+    <div class="streak"></div>
+    <div class="streak"></div>
+    <div class="streak"></div>
+    <div class="streak"></div>
+    <div class="streak"></div>
+    <div class="streak"></div>
+    <div class="streak"></div>
+    <div class="streak"></div>
+    <div class="streak"></div>
+    <div class="streak"></div>
+  </div>
+
+  <!-- Glow line -->
+  <div class="hero-glow-line" aria-hidden="true"></div>
+
+  <!-- Particles -->
+  <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+
+  <!-- Content -->
+  <div class="hero-content">
+    <p class="hero-eyebrow">Marathahalli, Bengaluru</p>
+    <div class="hero-logo">
+      <img src="fasttracks_wordmark.png" alt="Shine X Car Spa" class="ft-logo-img" />
+    </div>
+    <p class="hero-sub">CAR CARE</p>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">PREMIUM CAR WASH, DETAILING & CERAMIC COATING EXPERTS</p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/919916444888" target="_blank" rel="noopener" class="btn btn-red">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Book Now on WhatsApp
+      </a>
+      <a href="#services" class="btn btn-outline">Explore Services</a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+    <div class="scroll-mouse"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SECTION 2 — ABOUT / LEGACY
+════════════════════════════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="section-label">Our Legacy</p>
+        <h2 class="section-heading">25+ Years of<br /><span class="red-text">Excellence in Car Care</span></h2>
+        <p>
+          At Shine X Car Spa, we believe every vehicle deserves more than just a wash—it deserves perfection. Located in the heart of Bengaluru, we have spent over 25 years delivering premium car detailing, ceramic coating, paint protection, and restoration services that bring every vehicle back to showroom condition.
+        </p>
+        <p style="margin-top:16px;">
+          From luxury sedans and SUVs to performance machines, our expert team combines cutting-edge technology, premium products, and unmatched craftsmanship to protect and enhance every inch of your vehicle.
+        </p>
+        <p style="margin-top:16px;">
+          Thousands of satisfied customers trust Shine X Car Spa for one reason: we treat every car as if it were our own.
+        </p>
+        <p style="margin-top:24px; font-weight:700; font-size:1.1rem; color:var(--red); text-transform:uppercase; letter-spacing:1px;">
+          Because we don’t just clean cars.
+        </p>
+        <p style="margin-top:8px; font-weight:800; font-size:1.25rem; color:#fff; letter-spacing:0.5px;">
+          We Restore Pride. We Protect Value. We Create Shine.
+        </p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card reveal reveal-delay-1">
+          <div class="stat-number" data-target="25" data-suffix="+">0</div>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <div class="stat-number" data-target="1987" data-suffix="">0</div>
+          <div class="stat-label">Instagram Followers</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <div class="stat-number" data-target="365" data-suffix="">0</div>
+          <div class="stat-label">Days Open Every Year</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-4">
+          <div class="stat-number" data-target-text="All">–</div>
+          <div class="stat-label">Certified Technicians</div>
+        </div>
+      </div>
+
+      <!-- FOUNDER CARD -->
+      <div class="founder-card reveal">
+        <div class="founder-avatar" style="width:160px; min-height:210px; height:210px;">
+          <img src="founder_babu.jpg" alt="Babu Reddy – Founder & Chairman, Shine X Car Spa" style="object-position: center 20%;" />
+        </div>
+        <div class="founder-info">
+          <div class="founder-name">Babu Reddy</div>
+          <div class="founder-title">Founder &amp; Chairman</div>
+          <p class="founder-bio">
+            For Babu Reddy, success has never been about building just one business—it's about building a legacy. A passionate entrepreneur with interests across multiple industries, including Sri Vinayaka Earth Movers and several successful ventures, he has always believed that dedication, quality, and customer trust are the foundations of long-term success.
+          </p>
+          <p class="founder-bio" style="margin-top:12px;">
+            His love for automobiles and passion for business inspired the creation of Shine X Car Spa—a place where vehicle care meets excellence. What began as a vision to offer premium car detailing and protection services has grown into a trusted destination for car enthusiasts who demand the very best for their vehicles.
+          </p>
+          <p class="founder-bio" style="margin-top:12px;">
+            Under his leadership, Shine X Car Spa continues to set higher standards in car washing, detailing, ceramic coating, and paint protection, delivering exceptional results with every vehicle that enters the studio.
+          </p>
+          <p style="margin-top:16px; font-weight:700; font-size:13px; color:var(--red); text-transform:uppercase; letter-spacing:2px;">
+            Driven by passion. Powered by excellence. Built for perfection.
+          </p>
+          <blockquote style="margin:16px 0 0; padding:12px 16px; border-left:3px solid var(--red); background:rgba(226,3,8,0.06); border-radius:0 4px 4px 0; font-style:italic; font-size:14px; color:var(--silver); line-height:1.7;">
+            "Success is not just about building businesses—it's about creating experiences that people trust and remember."
+          </blockquote>
+          <div class="founder-links">
+            <a href="https://www.instagram.com/babureddykm/" target="_blank" rel="noopener" class="founder-insta">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              @babureddykm
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SECTION 3 — SERVICES
+════════════════════════════════════════════════════════════════════════ -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-header reveal">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-heading">Our Services</h2>
+      <p style="color:var(--gray);font-size:15px;margin-top:14px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.8;">
+        Premium Car &amp; Bike Care Services — delivered with precision, passion, and pride.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- 1 — MOST POPULAR -->
+      <div class="service-card reveal reveal-delay-1">
+        <div class="badge-popular">Most Popular</div>
+        <span class="service-icon">🧼</span>
+        <div class="service-name">Premium Foam Wash <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
+        <p class="service-desc">Our signature snow foam wash removes dirt, dust, and road grime safely while protecting your vehicle's paint finish.</p>
+      </div>
+
+      <!-- 2 -->
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">✨</span>
+        <div class="service-name">Exterior Detailing <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
+        <p class="service-desc">Professional polishing and detailing that restores shine, depth, and showroom-like gloss to your vehicle.</p>
+      </div>
+
+      <!-- 3 -->
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-icon">🛡️</span>
+        <div class="service-name">Ceramic Coating <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
+        <p class="service-desc">Advanced paint protection with long-lasting gloss, water beading, UV resistance, and easier maintenance.</p>
+      </div>
+
+      <!-- 4 -->
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">💎</span>
+        <div class="service-name">Paint Correction <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
+        <p class="service-desc">Removes swirl marks, oxidation, minor scratches, and paint imperfections using professional polishing systems.</p>
+      </div>
+
+      <!-- 5 -->
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">🧹</span>
+        <div class="service-name">Deep Interior Cleaning <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗</small></div>
+        <p class="service-desc">Complete interior rejuvenation including vacuuming, steam cleaning, shampooing, stain removal, and odor treatment.</p>
+      </div>
+
+      <!-- 6 -->
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-icon">🪑</span>
+        <div class="service-name">Leather Seat Treatment <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗</small></div>
+        <p class="service-desc">Deep cleaning, conditioning, and protection for leather seats and premium interiors.</p>
+      </div>
+
+      <!-- 7 -->
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">🪟</span>
+        <div class="service-name">Glass &amp; Windshield Treatment <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
+        <p class="service-desc">Crystal-clear visibility with hydrophobic coating and streak-free cleaning.</p>
+      </div>
+
+      <!-- 8 -->
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">🛞</span>
+        <div class="service-name">Wheel &amp; Tyre Detailing <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
+        <p class="service-desc">Deep cleaning, brake dust removal, tyre dressing, and wheel protection for a premium finish.</p>
+      </div>
+
+      <!-- 9 -->
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-icon">🌬️</span>
+        <div class="service-name">Engine Bay Cleaning <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
+        <p class="service-desc">Safe cleaning and dressing of the engine compartment for a fresh, factory-maintained appearance.</p>
+      </div>
+
+      <!-- 10 -->
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">💨</span>
+        <div class="service-name">AC Vent Sanitization <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗</small></div>
+        <p class="service-desc">Removes bacteria, odors, and allergens from your vehicle's air-conditioning system.</p>
+      </div>
+
+      <!-- 11 -->
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">🚘</span>
+        <div class="service-name">Premium Car Spa Package <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗</small></div>
+        <p class="service-desc">Complete inside-out detailing package including wash, polish, interior cleaning, and protection treatments.</p>
+      </div>
+
+      <!-- 12 -->
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-icon">🏍️</span>
+        <div class="service-name">Premium Bike Spa Package <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🏍️</small></div>
+        <p class="service-desc">Full bike wash, chain cleaning, polishing, plastic restoration, and paint protection for a showroom-fresh look.</p>
+      </div>
+
+      <!-- 13 -->
+      <div class="service-card reveal reveal-delay-1">
+        <span class="service-icon">⭐</span>
+        <div class="service-name">Monthly Membership Plans <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
+        <p class="service-desc">Regular washes, priority booking, detailing discounts, and exclusive member benefits for year-round vehicle care.</p>
+      </div>
+
+      <!-- 14 -->
+      <div class="service-card reveal reveal-delay-2">
+        <span class="service-icon">🧴</span>
+        <div class="service-name">Plastic &amp; Trim Restoration <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
+        <p class="service-desc">Revives faded plastics and trims, restoring a rich factory-new appearance.</p>
+      </div>
+
+      <!-- 15 -->
+      <div class="service-card reveal reveal-delay-3">
+        <span class="service-icon">🌟</span>
+        <div class="service-name">Headlight Restoration <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗</small></div>
+        <p class="service-desc">Removes oxidation and yellowing from headlights for improved visibility and aesthetics.</p>
+      </div>
+
+      <!-- FULL-WIDTH CTA CARD -->
+      <div class="service-card service-card-wild reveal reveal-delay-1" style="grid-column: 1 / -1; background: linear-gradient(135deg, #130003 0%, #1a0004 40%, #0e0e0e 100%); border-top: 3px solid var(--red); border-left: 1px solid rgba(232,0,13,0.3); border-right: 1px solid rgba(232,0,13,0.3); border-bottom: 1px solid rgba(232,0,13,0.15); text-align: center; padding: 52px 40px;">
+        <span class="service-icon" style="font-size:48px;">⚡</span>
+        <div class="service-name" style="font-family:'Bebas Neue',cursive; font-size:clamp(28px,4vw,48px); letter-spacing:3px; color:var(--white); margin-bottom:16px;">
+          Your Car Deserves the Best — <span style="color:var(--red);">We Deliver It.</span>
+        </div>
+        <p class="service-desc" style="font-size:15px; max-width:680px; margin:0 auto 28px; line-height:1.9; color:var(--silver);">
+          From a quick foam wash to a complete ceramic coating transformation — every vehicle that enters Shine X Car Spa leaves looking better than ever. Book your service today and experience the difference that expert hands make.
+        </p>
+        <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center; margin-bottom:32px;">
+          <span style="border:1px solid #333; color:var(--gray); padding:7px 18px; border-radius:100px; font-size:12px; letter-spacing:1px;">Cars &amp; SUVs</span>
+          <span style="border:1px solid #333; color:var(--gray); padding:7px 18px; border-radius:100px; font-size:12px; letter-spacing:1px;">Bikes &amp; Scooters</span>
+          <span style="border:1px solid #333; color:var(--gray); padding:7px 18px; border-radius:100px; font-size:12px; letter-spacing:1px;">Luxury Vehicles</span>
+          <span style="border:1px solid #333; color:var(--gray); padding:7px 18px; border-radius:100px; font-size:12px; letter-spacing:1px;">Performance Cars</span>
+          <span style="border:1px solid #333; color:var(--gray); padding:7px 18px; border-radius:100px; font-size:12px; letter-spacing:1px;">Daily Commuters</span>
+          <span style="border:1px solid rgba(232,0,13,0.5); color:var(--red); padding:7px 18px; border-radius:100px; font-size:12px; letter-spacing:1px; font-weight:700;">All Vehicles Welcome</span>
+        </div>
+        <a href="https://wa.me/919916444888?text=Hi%2C%20I%27d%20like%20to%20book%20a%20service%20at%20Shine%20X%20Car%20Spa" target="_blank" rel="noopener" class="btn btn-red" style="font-size:14px; padding:16px 44px; display:inline-flex;">
+          Book a Service Now →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SECTION 4 — ONLINE BOOKING
+════════════════════════════════════════════════════════════════════════ -->
+<section id="booking">
+  <div class="section-inner">
+    <div class="booking-wrapper reveal">
+
+      <p class="section-label">🚗🏍️ Book Your Service</p>
+      <h2 class="booking-heading">Premium Car &amp; Bike <span>Spa Booking</span></h2>
+      <p class="booking-sub">Your vehicle deserves professional care. Select your vehicle, choose a service, pick a time slot, and confirm your booking instantly through WhatsApp.</p>
+
+      <!-- BOOKING FORM -->
+      <div id="bookingForm">
+
+        <!-- STEP 1: VEHICLE TYPE -->
+        <div class="bk-step">
+          <div class="bk-step-label">Step 1 — Select Vehicle Type</div>
+          <div class="bk-vehicle-grid" id="vehicleGrid">
+            <div class="bk-pill" data-vehicle="Car">🚗 Car</div>
+            <div class="bk-pill" data-vehicle="SUV">🚙 SUV</div>
+            <div class="bk-pill" data-vehicle="Luxury Car">💎 Luxury Car</div>
+            <div class="bk-pill" data-vehicle="Bike">🏍️ Bike</div>
+            <div class="bk-pill" data-vehicle="Scooter">🛵 Scooter</div>
+          </div>
+        </div>
+
+        <!-- STEP 2: SERVICE -->
+        <div class="bk-step">
+          <div class="bk-step-label">Step 2 — Choose Service</div>
+          <div class="bk-service-grid" id="serviceGrid">
+            <!-- dynamically populated -->
+          </div>
+        </div>
+
+        <!-- STEP 3: DATE -->
+        <div class="bk-step">
+          <div class="bk-step-label">Step 3 — Select Date</div>
+          <input type="date" class="bk-date-input" id="bookingDate" />
+        </div>
+
+        <!-- STEP 4: TIME SLOT -->
+        <div class="bk-step">
+          <div class="bk-step-label">Step 4 — Select Time Slot</div>
+          <div class="bk-slots-grid" id="slotsGrid">
+            <div class="bk-slot" data-slot="09:00 AM – 10:00 AM">09:00 AM – 10:00 AM</div>
+            <div class="bk-slot" data-slot="10:00 AM – 11:00 AM">10:00 AM – 11:00 AM</div>
+            <div class="bk-slot" data-slot="11:00 AM – 12:00 PM">11:00 AM – 12:00 PM</div>
+            <div class="bk-slot" data-slot="12:00 PM – 01:00 PM">12:00 PM – 01:00 PM</div>
+            <div class="bk-slot" data-slot="02:00 PM – 03:00 PM">02:00 PM – 03:00 PM</div>
+            <div class="bk-slot" data-slot="03:00 PM – 04:00 PM">03:00 PM – 04:00 PM</div>
+            <div class="bk-slot" data-slot="04:00 PM – 05:00 PM">04:00 PM – 05:00 PM</div>
+            <div class="bk-slot" data-slot="05:00 PM – 06:00 PM">05:00 PM – 06:00 PM</div>
+            <div class="bk-slot" data-slot="06:00 PM – 07:00 PM">06:00 PM – 07:00 PM</div>
+            <div class="bk-slot" data-slot="07:00 PM – 08:00 PM">07:00 PM – 08:00 PM</div>
+            <div class="bk-slot" data-slot="08:00 PM – 09:00 PM">08:00 PM – 09:00 PM</div>
+          </div>
+          <p style="font-size:12px; color:var(--gray); margin-top:12px; line-height:1.6;">Each booking is allocated a dedicated 1-hour service window. Operating hours: 8:00 AM – 9:00 PM, open 365 days.</p>
+        </div>
+
+        <!-- STEP 5: CUSTOMER DETAILS -->
+        <div class="bk-step">
+          <div class="bk-step-label">Step 5 — Customer Details</div>
+          <div class="bk-fields-row">
+            <div class="bk-field">
+              <label for="custName">👤 Full Name</label>
+              <input type="text" id="custName" placeholder="e.g. Ramesh Kumar" autocomplete="name" />
+            </div>
+            <div class="bk-field">
+              <label for="custPhone">📞 Mobile Number</label>
+              <input type="tel" id="custPhone" placeholder="+91 98765 43210" autocomplete="tel" />
+            </div>
+          </div>
+          <div class="bk-fields-row" style="margin-top:14px;">
+            <div class="bk-field">
+              <label for="custModel">🚘 Vehicle Model</label>
+              <input type="text" id="custModel" placeholder="e.g. Honda City 2023" />
+            </div>
+            <div class="bk-field">
+              <label for="custNote">📝 Special Instructions (Optional)</label>
+              <textarea id="custNote" rows="2" placeholder="Any special requests or notes..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="bk-submit">
+          <button class="bk-whatsapp-btn" id="bookNowBtn" onclick="submitBooking()">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Book Now on WhatsApp
+          </button>
+          <p class="bk-note">We'll confirm your appointment within minutes.<br />Open daily 8:00 AM – 9:00 PM · Marathahalli, Bengaluru</p>
+        </div>
+
+      </div><!-- /bookingForm -->
+
+      <!-- SUCCESS STATE -->
+      <div class="bk-success" id="bookingSuccess">
+        <div class="bk-success-icon">✅</div>
+        <h3>Booking Request Sent!</h3>
+        <p>Thank you for choosing Shine X Car Spa.<br />Our team will contact you shortly to confirm your appointment.</p>
+        <p style="margin-top:20px; font-size:20px;">🚗 See You Soon!</p>
+        <button onclick="resetBooking()" style="margin-top:28px; background:transparent; border:1.5px solid var(--red); color:var(--red); padding:12px 30px; border-radius:4px; cursor:pointer; font-size:13px; font-weight:700; letter-spacing:1px; font-family:var(--sans); transition:background 0.2s, color 0.2s;" onmouseover="this.style.background='var(--red)';this.style.color='#fff';" onmouseout="this.style.background='transparent';this.style.color='var(--red)';">Make Another Booking</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  /* ── BOOKING FORM LOGIC ─────────────────────────────────────────── */
+  const SERVICES = {
+    car: [
+      { icon: '🧼', name: 'Basic Wash' },
+      { icon: '✨', name: 'Premium Foam Wash' },
+      { icon: '💎', name: 'Exterior Detailing' },
+      { icon: '🛡️', name: 'Ceramic Coating' },
+      { icon: '💎', name: 'Paint Correction' },
+      { icon: '🧹', name: 'Deep Interior Cleaning' },
+      { icon: '🪑', name: 'Leather Seat Treatment' },
+      { icon: '🪟', name: 'Glass & Windshield Treatment' },
+      { icon: '🛞', name: 'Wheel & Tyre Detailing' },
+      { icon: '🌬️', name: 'Engine Bay Cleaning' },
+      { icon: '💨', name: 'AC Vent Sanitization' },
+      { icon: '🚘', name: 'Complete Car Spa Package' },
+    ],
+    bike: [
+      { icon: '🏍️', name: 'Basic Bike Wash' },
+      { icon: '✨', name: 'Premium Foam Wash' },
+      { icon: '💎', name: 'Bike Detailing' },
+      { icon: '🛡️', name: 'Ceramic Coating' },
+      { icon: '⚙️', name: 'Chain Cleaning & Lubrication' },
+      { icon: '🛞', name: 'Wheel & Tyre Detailing' },
+      { icon: '🧴', name: 'Plastic & Trim Restoration' },
+      { icon: '🌬️', name: 'Engine Bay Cleaning' },
+      { icon: '🏍️', name: 'Complete Bike Spa Package' },
+    ]
+  };
+
+  let selectedVehicle = '', selectedService = '', selectedSlot = '';
+
+  // Set minimum booking date to today
+  (function() {
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const dd = String(today.getDate()).padStart(2, '0');
+    document.getElementById('bookingDate').min = `${yyyy}-${mm}-${dd}`;
+    document.getElementById('bookingDate').value = `${yyyy}-${mm}-${dd}`;
+  })();
+
+  // Vehicle pill selection
+  document.getElementById('vehicleGrid').addEventListener('click', function(e) {
+    const pill = e.target.closest('.bk-pill');
+    if (!pill) return;
+    document.querySelectorAll('.bk-pill').forEach(p => p.classList.remove('selected'));
+    pill.classList.add('selected');
+    selectedVehicle = pill.dataset.vehicle;
+    selectedService = '';
+    renderServices(selectedVehicle);
+  });
+
+  function renderServices(vehicle) {
+    const grid = document.getElementById('serviceGrid');
+    const isBike = vehicle === 'Bike' || vehicle === 'Scooter';
+    const list = isBike ? SERVICES.bike : SERVICES.car;
+    grid.innerHTML = list.map(s =>
+      `<div class="bk-service-card" data-service="${s.name}" onclick="selectService(this)">
+        <span class="sc-icon">${s.icon}</span>
+        <span class="sc-name">${s.name}</span>
+      </div>`
+    ).join('');
+  }
+
+  function selectService(el) {
+    document.querySelectorAll('.bk-service-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedService = el.dataset.service;
+  }
+
+  // Time slot selection
+  document.getElementById('slotsGrid').addEventListener('click', function(e) {
+    const slot = e.target.closest('.bk-slot');
+    if (!slot) return;
+    document.querySelectorAll('.bk-slot').forEach(s => s.classList.remove('selected'));
+    slot.classList.add('selected');
+    selectedSlot = slot.dataset.slot;
+  });
+
+  // Render default services on load
+  renderServices('Car');
+
+  function submitBooking() {
+    const name = document.getElementById('custName').value.trim();
+    const phone = document.getElementById('custPhone').value.trim();
+    const model = document.getElementById('custModel').value.trim();
+    const note = document.getElementById('custNote').value.trim();
+    const date = document.getElementById('bookingDate').value;
+
+    if (!selectedVehicle) { alert('Please select a vehicle type.'); return; }
+    if (!selectedService) { alert('Please choose a service.'); return; }
+    if (!date) { alert('Please select a date.'); return; }
+    if (!selectedSlot) { alert('Please select a time slot.'); return; }
+    if (!name) { alert('Please enter your name.'); return; }
+    if (!phone) { alert('Please enter your mobile number.'); return; }
+    if (!model) { alert('Please enter your vehicle model.'); return; }
+
+    const dateObj = new Date(date);
+    const formattedDate = dateObj.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+
+    const msg = `Hello Shine X Car Spa,\n\nI'd like to book a service.\n\n` +
+      `👤 Name: ${name}\n` +
+      `📞 Mobile: ${phone}\n` +
+      `🚗 Vehicle Type: ${selectedVehicle}\n` +
+      `🚘 Vehicle Model: ${model}\n` +
+      `✨ Service: ${selectedService}\n` +
+      `📅 Date: ${formattedDate}\n` +
+      `⏰ Time Slot: ${selectedSlot}\n` +
+      (note ? `📝 Special Instructions: ${note}\n` : '') +
+      `\nPlease confirm my booking. Thank you!`;
+
+    const waUrl = 'https://wa.me/919916444888?text=' + encodeURIComponent(msg);
+    window.open(waUrl, '_blank');
+
+    // Show success
+    document.getElementById('bookingForm').style.display = 'none';
+    document.getElementById('bookingSuccess').classList.add('show');
+  }
+
+  function resetBooking() {
+    selectedVehicle = ''; selectedService = ''; selectedSlot = '';
+    document.querySelectorAll('.bk-pill').forEach(p => p.classList.remove('selected'));
+    document.querySelectorAll('.bk-slot').forEach(s => s.classList.remove('selected'));
+    document.getElementById('custName').value = '';
+    document.getElementById('custPhone').value = '';
+    document.getElementById('custModel').value = '';
+    document.getElementById('custNote').value = '';
+    renderServices('Car');
+    document.getElementById('bookingSuccess').classList.remove('show');
+    document.getElementById('bookingForm').style.display = '';
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SECTION 5 — SOCIAL PROOF
+════════════════════════════════════════════════════════════════════════ -->
+<section id="why">
+  <div class="section-inner">
+    <div class="why-grid">
+
+      <div class="why-item reveal">
+        <span class="why-icon">⭐</span>
+        <div class="why-title">Premium Vehicle<br />Care</div>
+        <p class="why-desc">Professional washing and detailing services for cars and bikes that bring back the showroom shine.</p>
+      </div>
+
+      <div class="why-item reveal reveal-delay-2">
+        <span class="why-icon">⭐</span>
+        <div class="why-title">Expert Team</div>
+        <p class="why-desc">Our trained professionals use high-quality products to deliver outstanding results every time.</p>
+      </div>
+
+      <div class="why-item reveal reveal-delay-4">
+        <span class="why-icon">⭐</span>
+        <div class="why-title">Customer<br />Satisfaction</div>
+        <p class="why-desc">Thousands of happy customers trust Shine X Car Spa for reliable, affordable, and premium vehicle care.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SECTION 6 — HOW TO BOOK
+════════════════════════════════════════════════════════════════════════ -->
+<section id="book">
+  <div class="section-inner">
+    <div class="book-header reveal">
+      <p class="section-label">Simple Process</p>
+      <h2 class="section-heading">How to <span class="red-text">Book</span></h2>
+    </div>
+
+    <div class="steps-row">
+
+      <div class="step reveal reveal-delay-1">
+        <div class="step-number">1</div>
+        <div class="step-title">Select Your Vehicle</div>
+        <p class="step-desc">Choose your car or bike and let us know how you’d like it cared for.</p>
+      </div>
+
+      <div class="step-arrow reveal">›</div>
+
+      <div class="step reveal reveal-delay-2">
+        <div class="step-number">2</div>
+        <div class="step-title">Book Your Slot</div>
+        <p class="step-desc">Pick your preferred service, date, and available time slot that works best for you.</p>
+      </div>
+
+      <div class="step-arrow reveal">›</div>
+
+      <div class="step reveal reveal-delay-3">
+        <div class="step-number">3</div>
+        <div class="step-title">Drive In &amp; Shine Out</div>
+        <p class="step-desc">Arrive at Shine X Car Spa and leave with a spotless, showroom-fresh vehicle that turns heads everywhere.</p>
+      </div>
+
+    </div>
+
+    <p class="book-note reveal">
+      Book ahead to avoid waiting. Walk-ins are welcome whenever slots are available.
+    </p>
+
+    <div style="text-align:center;margin-top:48px;" class="reveal">
+      <a href="https://wa.me/919916444888" target="_blank" rel="noopener" class="btn btn-red" style="font-size:15px;padding:18px 48px;">
+        Direct Contact
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SECTION 7 — CONTACT
+════════════════════════════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+
+      <!-- LEFT -->
+      <div>
+        <div class="contact-heading reveal">
+          <p class="section-label">Find Us</p>
+          <h2 class="section-heading">Get in <span class="red-text">Touch</span></h2>
+        </div>
+        <div class="contact-details">
+
+          <div class="contact-item reveal reveal-delay-1">
+            <span class="contact-icon">📍</span>
+            <div class="contact-text">
+              <strong>Address</strong>
+              10, 4th A Cross, Shirdi Sai Nagar,<br />
+              Munnekolala, near Krishna Bakery & SBI ATM,<br />
+              Marathahalli, Bengaluru, Karnataka 560037
+            </div>
+          </div>
+
+          <div class="contact-item reveal reveal-delay-2">
+            <span class="contact-icon">📞</span>
+            <div class="contact-text">
+              <strong>Phone / WhatsApp</strong>
+              <a href="tel:+919916444888">+91 99164 44888</a>
+            </div>
+          </div>
+
+          <div class="contact-item reveal reveal-delay-3">
+            <span class="contact-icon">🕐</span>
+            <div class="contact-text">
+              <strong>Working Hours</strong>
+              Mon–Sun: 8:00 AM – 9:00 PM<br />
+              <span style="color:var(--red);font-size:13px;font-weight:600;">Open 365 Days a Year</span>
+            </div>
+          </div>
+
+          <div class="contact-item reveal reveal-delay-4">
+            <span class="contact-icon">📸</span>
+            <div class="contact-text">
+              <strong>Instagram</strong>
+              <a href="https://instagram.com/shinex_carspa" target="_blank" rel="noopener">@shinex_carspa</a>
+              &nbsp;· 1987 Followers
+            </div>
+          </div>
+
+        </div>
+        <div class="map-container reveal" style="margin-top:28px;">
+          <iframe 
+            src="https://maps.google.com/maps?q=10,+4th+A+Cross,+Shirdi+Sai+Nagar,+Munnekolala,+near+Krishna+Bakery+and+SBI+ATM,+Marathahalli,+Bengaluru,+Karnataka+560037&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+            width="100%" 
+            height="320" 
+            style="border:0; border-radius:8px;" 
+            allowfullscreen="" 
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="contact-right reveal">
+        <p class="wa-big-text">Ready to transform<br />your car?</p>
+        <p style="font-size:14px;color:var(--gray);max-width:300px;line-height:1.8;text-align:center;">
+          Drop us a message and we'll get back to you instantly. No wait times. No call centres. Real people, real answers.
+        </p>
+        <p class="wa-number">+91 99164 44888</p>
+        <a
+          href="https://wa.me/919916444888"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-whatsapp"
+          style="font-size:16px;padding:20px 56px;margin-top:12px;"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat With Us on WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     SECTION 8 — FOOTER
+════════════════════════════════════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="section-inner">
+
+    <div class="footer-logo">
+      <img src="fasttracks_wordmark.png" alt="Shine X Car Spa" class="ft-logo-img" />
+    </div>
+    <p class="footer-tagline">India's Biggest Instant Car Modification Studio</p>
+
+    <div class="footer-socials">
+      <!-- Instagram -->
+      <a href="https://instagram.com/shinex_carspa" target="_blank" rel="noopener" class="social-btn" title="Instagram">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/919916444888" target="_blank" rel="noopener" class="social-btn" title="WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+    </div>
+
+    <div class="footer-divider"></div>
+    <p class="footer-copy">© 2025 Shine X Car Spa. All Rights Reserved. &nbsp;·&nbsp; Marathahalli, Bengaluru</p>
+
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════════════════════ -->
+<script>
+  /* ── STICKY NAV ────────────────────────────────────────────────────── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── HERO FADE ON SCROLL ────────────────────────────────────────────── */
+  const hero = document.getElementById('home');
+  window.addEventListener('scroll', () => {
+    const progress = Math.min(window.scrollY / (hero.offsetHeight * 0.7), 1);
+    hero.style.opacity = 1 - progress * 0.6;
+  }, { passive: true });
+
+  /* ── MOBILE MENU ───────────────────────────────────────────────────── */
+  function toggleMobile() {
+    const nav = document.getElementById('mobileNav');
+    const ham = document.getElementById('hamburger');
+    const open = nav.classList.toggle('open');
+    ham.classList.toggle('open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  function closeMobile() {
+    document.getElementById('mobileNav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── INTERSECTION OBSERVER: REVEAL ─────────────────────────────────── */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal, .reveal-left').forEach(el => {
+    revealObserver.observe(el);
+  });
+
+  /* ── COUNTER ANIMATION ─────────────────────────────────────────────── */
+  function animateCounter(el, target, suffix, duration) {
+    const start = performance.now();
+    const step = (now) => {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const current = Math.floor(eased * target);
+      el.textContent = current + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+
+      // Static text counter (e.g. "All")
+      if (el.dataset.targetText) {
+        el.textContent = el.dataset.targetText;
+        counterObserver.unobserve(el);
+        return;
+      }
+
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      animateCounter(el, target, suffix, 1800);
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.stat-number').forEach(el => {
+    counterObserver.observe(el);
+  });
+
+  /* ── CAR BADGES SLIDE-IN ────────────────────────────────────────────── */
+  const badgesObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const badges = e.target.querySelectorAll('.car-badge');
+      badges.forEach((badge, i) => {
+        setTimeout(() => {
+          badge.classList.add('visible');
+        }, i * 80);
+      });
+      badgesObserver.unobserve(e.target);
+    });
+  }, { threshold: 0.2 });
+
+  const badgesContainer = document.getElementById('carBadges');
+  if (badgesContainer) badgesObserver.observe(badgesContainer);
+
+  /* ── ACTIVE NAV LINK ON SCROLL ──────────────────────────────────────── */
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const activeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => {
+          a.style.color = '';
+        });
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if (active && !active.classList.contains('nav-cta')) {
+          active.style.color = 'var(--white)';
+        }
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach(s => activeObserver.observe(s));
+
+  /* ── SMOOTH SCROLL FOR ALL ANCHOR LINKS ─────────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+
+  /* ── FEATURED SERVICES CAROUSEL ─────────────────────────────────────── */
+  (function initCarousel() {
+    const track    = document.getElementById('featTrack');
+    const wrap     = document.getElementById('featWrap');
+    const dotsBox  = document.getElementById('featDots');
+    const btnPrev  = document.getElementById('featPrev');
+    const btnNext  = document.getElementById('featNext');
+    if (!track) return;
+
+    const cards     = Array.from(track.children);
+    const total     = cards.length;
+    let current     = 0;
+    let autoTimer   = null;
+
+    /* how many cards visible at once based on viewport */
+    function visibleCount() {
+      const w = wrap.offsetWidth;
+      if (w < 560) return 1;
+      if (w < 900) return 2;
+      return 3;
+    }
+
+    /* max index we can slide to */
+    function maxIndex() { return Math.max(0, total - visibleCount()); }
+
+    /* pixel offset for a given index */
+    function offsetFor(idx) {
+      const cardEl   = cards[0];
+      const gap      = 20;
+      const cardW    = cardEl.offsetWidth;
+      return idx * (cardW + gap);
+    }
+
+    /* build / refresh dots */
+    function buildDots() {
+      dotsBox.innerHTML = '';
+      const pages = maxIndex() + 1;
+      for (let i = 0; i < pages; i++) {
+        const d = document.createElement('button');
+        d.className = 'feat-dot' + (i === current ? ' active' : '');
+        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        d.addEventListener('click', () => goTo(i));
+        dotsBox.appendChild(d);
+      }
+    }
+
+    function updateDots() {
+      dotsBox.querySelectorAll('.feat-dot').forEach((d, i) => {
+        d.classList.toggle('active', i === current);
+      });
+    }
+
+    function updateArrows() {
+      btnPrev.disabled = current === 0;
+      btnNext.disabled = current >= maxIndex();
+    }
+
+    function goTo(idx) {
+      current = Math.max(0, Math.min(idx, maxIndex()));
+      track.style.transform = `translateX(-${offsetFor(current)}px)`;
+      updateDots();
+      updateArrows();
+      resetAuto();
+    }
+
+    function resetAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => {
+        goTo(current >= maxIndex() ? 0 : current + 1);
+      }, 4500);
+    }
+
+    btnPrev.addEventListener('click', () => goTo(current - 1));
+    btnNext.addEventListener('click', () => goTo(current + 1));
+
+    /* ── Touch / Mouse drag ── */
+    let dragStart = null;
+    let dragging  = false;
+
+    function onDragStart(x) { dragStart = x; dragging = false; }
+    function onDragMove(x)  {
+      if (dragStart === null) return;
+      if (Math.abs(x - dragStart) > 6) {
+        dragging = true;
+        wrap.classList.add('dragging');
+      }
+    }
+    function onDragEnd(x) {
+      if (dragStart === null) return;
+      const diff = dragStart - x;
+      if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+      dragStart = null;
+      dragging  = false;
+      wrap.classList.remove('dragging');
+    }
+
+    wrap.addEventListener('mousedown',  e => onDragStart(e.clientX));
+    window.addEventListener('mousemove', e => { if (dragStart !== null) onDragMove(e.clientX); });
+    window.addEventListener('mouseup',   e => onDragEnd(e.clientX));
+
+    wrap.addEventListener('touchstart', e => onDragStart(e.touches[0].clientX), { passive: true });
+    wrap.addEventListener('touchmove',  e => onDragMove(e.touches[0].clientX),  { passive: true });
+    wrap.addEventListener('touchend',   e => onDragEnd(e.changedTouches[0].clientX));
+
+    /* prevent clicks on cards firing during drag */
+    wrap.addEventListener('click', e => { if (dragging) e.preventDefault(); }, true);
+
+    /* re-init on resize (card widths change) */
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        current = Math.min(current, maxIndex());
+        track.style.transition = 'none';
+        track.style.transform  = `translateX(-${offsetFor(current)}px)`;
+        requestAnimationFrame(() => { track.style.transition = ''; });
+        buildDots();
+        updateArrows();
+      }, 150);
+    });
+
+    /* init */
+    buildDots();
+    updateArrows();
+    resetAuto();
+  })();
+
+  // ─── THEME TOGGLE ────────────────────────────────────────────────────────
+  function toggleTheme() {
+    document.body.classList.toggle('light-mode');
+    localStorage.setItem('ft-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
+  }
+  if (localStorage.getItem('ft-theme') === 'light') {
+    document.body.classList.add('light-mode');
+  }
+
+  /* ── PARTICLES ─────────────────────────────────────────────────────── */
+  (function spawnParticles() {
+    const container = document.getElementById('heroParticles');
+    const count = 30;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const x = Math.random() * 100;
+      const y = Math.random() * 100;
+      const dx = (Math.random() - 0.5) * 300 + 'px';
+      const dy = (Math.random() - 0.5) * 300 + 'px';
+      const dur = (Math.random() * 4 + 3) + 's';
+      const delay = (Math.random() * 6) + 's';
+      p.style.cssText = `left:${x}%;top:${y}%;--dx:${dx};--dy:${dy};animation-duration:${dur};animation-delay:${delay};`;
+      container.appendChild(p);
+    }
+  })();
+  /* ── LATEST DROP ENTRY FLASH + AUTO POPUP + COUNTDOWN ─────────── */
+  window.addEventListener('load', () => {
+    /* --- trigger flash-in animation --- */
+    const btn = document.getElementById('dropBtn');
+    if (btn) {
+      setTimeout(() => {
+        btn.classList.add('drop-flash');
+        btn.addEventListener('animationend', () => {
+          btn.classList.remove('drop-flash');
+          btn.classList.add('drop-rest');
+        }, { once: true });
+      }, 1200);
+    }
+
+    /* --- auto-open popup immediately on load (once per session) --- */
+    if (!sessionStorage.getItem('ft-drop-shown')) {
+      setTimeout(() => {
+        openDrop();
+        sessionStorage.setItem('ft-drop-shown', '1');
+      }, 800);
+    }
+
+    /* --- countdown to end of current week (Sunday 23:59:59) --- */
+    function updateCountdown() {
+      const now  = new Date();
+      const end  = new Date(now);
+      end.setDate(now.getDate() + (7 - now.getDay()) % 7 || 7);
+      end.setHours(23, 59, 59, 0);
+      const diff = end - now;
+      if (diff <= 0) return;
+      const h = String(Math.floor(diff / 3600000)).padStart(2,'0');
+      const m = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+      const s = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+      const el = document.getElementById('dropCountdown');
+      if (el) el.textContent = `${h}:${m}:${s}`;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  });
+
+</script>
+
+
+</body>
+</html>
