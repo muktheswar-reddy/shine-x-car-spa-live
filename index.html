@@ -3036,25 +3036,14 @@
     let loadedCount = 0;
     let allLoaded = false;
     let currentFrame = 0;
-    let lastWidth = window.innerWidth;
 
     function padNum(n) {
       return String(n).padStart(3, '0');
     }
 
     function resizeCanvas() {
-      // Only resize if the width actually changed (rotation / layout shift)
-      // to prevent flashing on mobile scroll due to address bar toggles
-      const widthChanged = window.innerWidth !== lastWidth;
-      if (!widthChanged && canvas.width > 0) {
-        return;
-      }
-      lastWidth = window.innerWidth;
-
-      const isMobile = window.innerWidth <= 768;
-      const dpr = isMobile ? 1.0 : (window.devicePixelRatio > 1 ? 1.5 : 1.0);
-      canvas.width  = window.innerWidth  * dpr;
-      canvas.height = window.innerHeight * dpr;
+      canvas.width  = window.innerWidth  * (window.devicePixelRatio > 1 ? 1.5 : 1);
+      canvas.height = window.innerHeight * (window.devicePixelRatio > 1 ? 1.5 : 1);
       drawFrame(currentFrame);
     }
 
@@ -3084,7 +3073,7 @@
       ctx.drawImage(img, dx, dy, drawW, drawH);
     }
 
-    // Load frames progressively
+    // Load frames with priority – first frame immediately, rest progressively
     function loadFrames() {
       for (let i = 0; i < TOTAL_FRAMES; i++) {
         const img = new Image();
@@ -3098,6 +3087,7 @@
             allLoaded = true;
             loader.classList.add('hidden');
             hint.classList.add('visible');
+            // Hide hint after a few seconds
             setTimeout(() => hint.classList.remove('visible'), 4000);
           }
         };
@@ -3105,24 +3095,14 @@
       }
     }
 
-    // High performance scroll handler using requestAnimationFrame
-    let tick = false;
+    // Scroll handler
     function onScroll() {
-      if (!tick) {
-        window.requestAnimationFrame(() => {
-          updateScroll();
-          tick = false;
-        });
-        tick = true;
-      }
-    }
-
-    function updateScroll() {
       const rect = section.getBoundingClientRect();
       const sectionH = section.offsetHeight;
       const viewH = window.innerHeight;
 
-      // Calculate progress through section
+      // Calculate how far we've scrolled through the section
+      // Progress 0 = section just entered, 1 = section about to leave
       const scrolled = -rect.top;
       const totalRange = sectionH - viewH;
       const progress = Math.max(0, Math.min(1, scrolled / totalRange));
@@ -3159,7 +3139,7 @@
     window.addEventListener('resize', resizeCanvas);
     window.addEventListener('scroll', onScroll, { passive: true });
     // Initial call
-    updateScroll();
+    onScroll();
   })();
 
 </script>
