@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="fasttracks_icon.png" />
-  <link rel="apple-touch-icon" href="fasttracks_icon.png" />
+  <link rel="icon" type="image/jpeg" href="shinex_shield_logo.jpg" />
+  <link rel="apple-touch-icon" href="shinex_shield_logo.jpg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Shine X Car Spa — India's Biggest Instant Car Modification Studio. Based in Marathahalli, Bengaluru. PPF, Custom Audio, Detailing & more." />
   <title>Shine X Car Spa | India's Biggest Car Modification Studio</title>
@@ -201,10 +201,15 @@
       transition: all 0.3s;
     }
     .nav-logo .ft-logo-img {
-      height: 36px;
+      height: 50px;
       width: auto;
+      filter: drop-shadow(0 0 8px rgba(232, 0, 13, 0.6));
+      transition: height 0.4s ease, filter 0.4s ease;
     }
-    #navbar.scrolled .nav-logo .ft-logo-img { height: 28px; }
+    #navbar.scrolled .nav-logo .ft-logo-img {
+      height: 42px;
+      filter: drop-shadow(0 0 6px rgba(232, 0, 13, 0.5));
+    }
 
     /* ────────────────────────────────────────────── */
 
@@ -1489,8 +1494,10 @@
 
     /* ── Tablet Portrait (max-width: 768px) ──────────────────────────── */
     @media (max-width: 768px) {
-      #navbar        { padding: 16px 20px; }
-      #navbar.scrolled { padding: 12px 20px; }
+      #navbar        { padding: 12px 16px; }
+      #navbar.scrolled { padding: 12px 16px; }
+      .nav-logo .ft-logo-img { height: 100px; }
+      #navbar.scrolled .nav-logo .ft-logo-img { height: 80px; }
       .nav-links     { display: none; }
       .hamburger     { display: flex; }
 
@@ -1535,8 +1542,6 @@
       .stat-number   { font-size: 40px; }
       .stats-grid    { gap: 10px; }
       .section-inner { padding: 0 16px; }
-      #navbar        { padding: 14px 16px; }
-      #navbar.scrolled { padding: 10px 16px; }
       .founder-card  { padding: 20px 16px; gap: 16px; }
     }
 
@@ -1802,7 +1807,7 @@
 <!-- ─── NAVBAR ────────────────────────────────────────────────────────────── -->
 <nav id="navbar">
   <a href="#home" class="nav-logo">
-    <img src="fasttracks_icon.png" alt="Shine X Car Spa" class="ft-logo-img" />
+    <img src="shinex_shield_logo.jpg" alt="Shine X Car Spa" class="ft-logo-img" />
   </a>
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
