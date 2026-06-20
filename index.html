@@ -596,37 +596,88 @@
     }
 
     .service-card {
-      background: var(--black2);
-      border: 1px solid #1e1e1e;
-      border-top: 3px solid var(--red);
-      border-radius: 4px;
-      padding: 32px 28px;
+      background: linear-gradient(165deg, #111111 0%, #0a0a0a 50%, #0d0d0d 100%);
+      border: 1px solid #1a1a1a;
+      border-radius: 12px;
+      padding: 0;
       position: relative;
       cursor: default;
-      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1),
-                  box-shadow 0.35s ease,
-                  border-color 0.35s ease;
+      transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1),
+                  box-shadow 0.45s ease,
+                  border-color 0.45s ease;
       overflow: hidden;
     }
     .service-card::before {
       content: '';
       position: absolute;
-      inset: 0;
-      border-radius: 4px;
+      inset: -1px;
+      border-radius: 12px;
       border: 1.5px solid transparent;
-      transition: border-color 0.35s;
+      transition: border-color 0.45s ease;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120%;
+      height: 60%;
+      background: radial-gradient(ellipse, rgba(232,0,13,0.06) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
     }
     .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 60px rgba(232,0,13,0.18);
-      border-color: var(--red);
+      transform: translateY(-10px);
+      box-shadow: 0 24px 64px rgba(232,0,13,0.2), 0 0 0 1px rgba(232,0,13,0.15);
+      border-color: rgba(232,0,13,0.4);
     }
-    .service-card:hover::before { border-color: rgba(232,0,13,0.3); }
+    .service-card:hover::before { border-color: rgba(232,0,13,0.35); }
+    .service-card:hover::after { opacity: 1; }
+    .service-card:hover .service-img img { transform: scale(1.08); }
+    .service-card:hover .service-badge { letter-spacing: 2.5px; }
 
-    .service-icon {
-      font-size: 36px;
-      margin-bottom: 16px;
+    .service-img {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+    }
+    .service-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .service-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7) 100%);
+      pointer-events: none;
+    }
+
+    .service-body {
+      padding: 20px 24px 28px;
+    }
+
+    .service-badge {
+      display: inline-block;
+      background: #FF0000;
+      color: #fff;
+      font-family: var(--bebas);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      padding: 7px 18px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+      transition: letter-spacing 0.4s ease;
     }
 
     .service-name {
@@ -635,25 +686,28 @@
       color: var(--white);
       margin-bottom: 10px;
       letter-spacing: 0.3px;
+      display: none;
     }
 
     .service-desc {
-      font-size: 13px;
-      color: var(--gray);
-      line-height: 1.7;
+      font-size: 13.5px;
+      color: #999;
+      line-height: 1.75;
     }
 
     .badge-popular {
       position: absolute;
-      top: 16px; right: 16px;
-      background: var(--red);
-      color: #fff;
+      top: 12px; right: 12px;
+      background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+      color: #000;
       font-size: 9px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 2px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      z-index: 2;
+      box-shadow: 0 2px 12px rgba(255,215,0,0.3);
     }
 
     /* ════════════════════════════════════════════════════════════════════
@@ -1391,8 +1445,8 @@
       .stat-card       { padding: 36px 28px; }
 
       .services-grid { grid-template-columns: repeat(4, 1fr); gap: 28px; }
-      .service-icon  { font-size: 44px; margin-bottom: 20px; }
-      .service-name  { font-size: 19px; }
+      .service-img   { height: 200px; }
+      .service-badge { font-size: 15px; padding: 8px 20px; }
       .service-desc  { font-size: 14px; line-height: 1.8; }
 
       .founder-card   { padding: 36px 40px; gap: 36px; }
@@ -1415,7 +1469,8 @@
       .stat-card     { padding: 32px 24px; }
 
       .services-grid { grid-template-columns: repeat(4, 1fr); gap: 22px; }
-      .service-name  { font-size: 16px; }
+      .service-img   { height: 160px; }
+      .service-badge { font-size: 13px; padding: 6px 14px; }
 
       .founder-avatar { width: 160px; min-height: 220px; }
       .founder-name   { font-size: 24px; }
@@ -1443,6 +1498,8 @@
       .section-inner { padding: 0 22px; }
 
       .services-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .service-img   { height: 160px; }
+      .service-body  { padding: 16px 20px 24px; }
       .contact-grid  { grid-template-columns: 1fr; gap: 48px; }
       .steps-row     { flex-direction: column; align-items: center; }
       .step-arrow    { transform: rotate(90deg); padding: 0; }
@@ -1462,12 +1519,13 @@
 
     /* ── Mobile (max-width: 540px) ───────────────────────────────────── */
     @media (max-width: 540px) {
-      .services-grid { grid-template-columns: 1fr; gap: 14px; }
+      .services-grid { grid-template-columns: 1fr; gap: 18px; }
+      .service-img   { height: 200px; }
       .stat-number   { font-size: 48px; }
       .stats-grid    { gap: 14px; }
       .hero-sub      { letter-spacing: 5px; font-size: clamp(14px, 4vw, 20px); }
       .section-inner { padding: 0 18px; }
-      .service-card  { padding: 24px 22px; }
+      .service-body  { padding: 18px 20px 24px; }
     }
 
     /* ── Small Mobile (max-width: 420px) ─────────────────────────────── */
@@ -1960,89 +2018,129 @@
       <!-- 1 — MOST POPULAR -->
       <div class="service-card reveal reveal-delay-1">
         <div class="badge-popular">Most Popular</div>
-        <span class="service-icon">🧼</span>
-        <div class="service-name">Premium Foam Wash <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
-        <p class="service-desc">Our signature snow foam wash removes dirt, dust, and road grime safely while protecting your vehicle's paint finish.</p>
+        <div class="service-img">
+          <img src="images/services/foam-wash.png" alt="Premium Foam Wash" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-badge">Premium Foam Wash</div>
+          <p class="service-desc">Our signature snow foam wash removes dirt, dust, and road grime safely while protecting your vehicle's paint finish.</p>
+        </div>
       </div>
 
       <!-- 2 -->
       <div class="service-card reveal reveal-delay-2">
-        <span class="service-icon">✨</span>
-        <div class="service-name">Exterior Detailing <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
-        <p class="service-desc">Professional polishing and detailing that restores shine, depth, and showroom-like gloss to your vehicle.</p>
+        <div class="service-img">
+          <img src="images/services/exterior-detailing.png" alt="Exterior Detailing" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-badge">Exterior Detailing</div>
+          <p class="service-desc">Professional polishing and detailing that restores shine, depth, and showroom-like gloss to your vehicle.</p>
+        </div>
       </div>
 
       <!-- 3 -->
       <div class="service-card reveal reveal-delay-3">
-        <span class="service-icon">🛡️</span>
-        <div class="service-name">Ceramic Coating <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
-        <p class="service-desc">Advanced paint protection with long-lasting gloss, water beading, UV resistance, and easier maintenance.</p>
+        <div class="service-img">
+          <img src="images/services/ceramic-coating.png" alt="Ceramic Coating" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-badge">Ceramic Coating</div>
+          <p class="service-desc">Advanced paint protection with long-lasting gloss, water beading, UV resistance, and easier maintenance.</p>
+        </div>
       </div>
 
+      <!-- 4 -->
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-img">
+          <img src="images/services/interior-cleaning.png" alt="Deep Interior Cleaning" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-badge">Deep Interior Cleaning</div>
+          <p class="service-desc">Complete interior rejuvenation including vacuuming, steam cleaning, shampooing, stain removal, and odor treatment.</p>
+        </div>
+      </div>
 
       <!-- 5 -->
-      <div class="service-card reveal reveal-delay-2">
-        <span class="service-icon">🧹</span>
-        <div class="service-name">Deep Interior Cleaning <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗</small></div>
-        <p class="service-desc">Complete interior rejuvenation including vacuuming, steam cleaning, shampooing, stain removal, and odor treatment.</p>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-img">
+          <img src="images/services/leather-treatment.png" alt="Leather Seat Treatment" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-badge">Leather Seat Treatment</div>
+          <p class="service-desc">Deep cleaning, conditioning, and protection for leather seats and premium interiors.</p>
+        </div>
       </div>
 
       <!-- 6 -->
-      <div class="service-card reveal reveal-delay-3">
-        <span class="service-icon">🪑</span>
-        <div class="service-name">Leather Seat Treatment <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗</small></div>
-        <p class="service-desc">Deep cleaning, conditioning, and protection for leather seats and premium interiors.</p>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-img">
+          <img src="images/services/glass-treatment.png" alt="Glass & Windshield Treatment" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-badge">Glass & Windshield Treatment</div>
+          <p class="service-desc">Crystal-clear visibility with hydrophobic coating and streak-free cleaning.</p>
+        </div>
       </div>
 
       <!-- 7 -->
-      <div class="service-card reveal reveal-delay-1">
-        <span class="service-icon">🪟</span>
-        <div class="service-name">Glass &amp; Windshield Treatment <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
-        <p class="service-desc">Crystal-clear visibility with hydrophobic coating and streak-free cleaning.</p>
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-img">
+          <img src="images/services/wheel-detailing.png" alt="Wheel & Tyre Detailing" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-badge">Wheel & Tyre Detailing</div>
+          <p class="service-desc">Deep cleaning, brake dust removal, tyre dressing, and wheel protection for a premium finish.</p>
+        </div>
       </div>
 
       <!-- 8 -->
-      <div class="service-card reveal reveal-delay-2">
-        <span class="service-icon">🛞</span>
-        <div class="service-name">Wheel &amp; Tyre Detailing <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
-        <p class="service-desc">Deep cleaning, brake dust removal, tyre dressing, and wheel protection for a premium finish.</p>
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-img">
+          <img src="images/services/ac-sanitization.png" alt="AC Vent Sanitization" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-badge">AC Vent Sanitization</div>
+          <p class="service-desc">Removes bacteria, odors, and allergens from your vehicle's air-conditioning system.</p>
+        </div>
       </div>
 
+      <!-- 9 -->
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-img">
+          <img src="images/services/car-spa.png" alt="Premium Car Spa Package" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-badge">Premium Car Spa Package</div>
+          <p class="service-desc">Complete inside-out detailing package including wash, polish, interior cleaning, and protection treatments.</p>
+        </div>
+      </div>
 
       <!-- 10 -->
-      <div class="service-card reveal reveal-delay-1">
-        <span class="service-icon">💨</span>
-        <div class="service-name">AC Vent Sanitization <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗</small></div>
-        <p class="service-desc">Removes bacteria, odors, and allergens from your vehicle's air-conditioning system.</p>
+      <div class="service-card reveal reveal-delay-3">
+        <div class="service-img">
+          <img src="images/services/bike-spa.png" alt="Premium Bike Spa Package" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-badge">Premium Bike Spa Package</div>
+          <p class="service-desc">Full bike wash, chain cleaning, polishing, plastic restoration, and paint protection for a showroom-fresh look.</p>
+        </div>
       </div>
 
       <!-- 11 -->
-      <div class="service-card reveal reveal-delay-2">
-        <span class="service-icon">🚘</span>
-        <div class="service-name">Premium Car Spa Package <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗</small></div>
-        <p class="service-desc">Complete inside-out detailing package including wash, polish, interior cleaning, and protection treatments.</p>
-      </div>
-
-      <!-- 12 -->
-      <div class="service-card reveal reveal-delay-3">
-        <span class="service-icon">🏍️</span>
-        <div class="service-name">Premium Bike Spa Package <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🏍️</small></div>
-        <p class="service-desc">Full bike wash, chain cleaning, polishing, plastic restoration, and paint protection for a showroom-fresh look.</p>
-      </div>
-
-      <!-- 13 -->
       <div class="service-card reveal reveal-delay-1">
-        <span class="service-icon">⭐</span>
-        <div class="service-name">Monthly Membership Plans <small style="font-size:12px;color:var(--red);letter-spacing:1px;">🚗🏍️</small></div>
-        <p class="service-desc">Regular washes, priority booking, detailing discounts, and exclusive member benefits for year-round vehicle care.</p>
+        <div class="service-img">
+          <img src="images/services/membership.png" alt="Monthly Membership Plans" loading="lazy">
+        </div>
+        <div class="service-body">
+          <div class="service-badge">Monthly Membership Plans</div>
+          <p class="service-desc">Regular washes, priority booking, detailing discounts, and exclusive member benefits for year-round vehicle care.</p>
+        </div>
       </div>
-
 
       <!-- FULL-WIDTH CTA CARD -->
       <div class="service-card service-card-wild reveal reveal-delay-1" style="grid-column: 1 / -1; background: linear-gradient(135deg, #130003 0%, #1a0004 40%, #0e0e0e 100%); border-top: 3px solid var(--red); border-left: 1px solid rgba(232,0,13,0.3); border-right: 1px solid rgba(232,0,13,0.3); border-bottom: 1px solid rgba(232,0,13,0.15); text-align: center; padding: 52px 40px;">
-        <span class="service-icon" style="font-size:48px;">⚡</span>
-        <div class="service-name" style="font-family:'Bebas Neue',cursive; font-size:clamp(28px,4vw,48px); letter-spacing:3px; color:var(--white); margin-bottom:16px;">
-          Your Car Deserves the Best — <span style="color:var(--red);">We Deliver It.</span>
+        <div class="service-name" style="font-family:'Bebas Neue',cursive; font-size:clamp(28px,4vw,48px); letter-spacing:3px; color:var(--white); margin-bottom:16px; display:block;">
+          Your Vehicle Deserves the Best — <span style="color:var(--red);">We Deliver It.</span>
         </div>
         <p class="service-desc" style="font-size:15px; max-width:680px; margin:0 auto 28px; line-height:1.9; color:var(--silver);">
           From a quick foam wash to a complete ceramic coating transformation — every vehicle that enters Shine X Car Spa leaves looking better than ever. Book your service today and experience the difference that expert hands make.
