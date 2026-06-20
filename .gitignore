@@ -1,1 +1,3 @@
 .vercel
+# Exclude original large PNG frames (~250MB)
+thar images/thar cleaning zip/

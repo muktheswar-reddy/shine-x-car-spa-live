@@ -1492,6 +1492,219 @@
       .service-card  { padding: 20px 16px; }
     }
 
+    /* ════════════════════════════════════════════════════════════════════
+       THAR SCROLL ANIMATION
+    ════════════════════════════════════════════════════════════════════ */
+    #thar-scroll {
+      position: relative;
+      height: 500vh; /* tall container for scroll range */
+      background: #000;
+    }
+
+    .thar-sticky {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #tharCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Dark vignette overlay on canvas */
+    .thar-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.7) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Scan-line subtle effect */
+    .thar-scanlines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.03) 2px,
+        rgba(0,0,0,0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Text overlays */
+    .thar-text-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thar-text-card {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px) scale(0.95);
+      transition: opacity 0.6s cubic-bezier(0.16,1,0.3,1), transform 0.6s cubic-bezier(0.16,1,0.3,1);
+      pointer-events: none;
+      position: absolute;
+    }
+    .thar-text-card.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .thar-text-card .thar-label {
+      font-family: var(--inter);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+
+    .thar-text-card .thar-headline {
+      font-family: var(--bebas);
+      font-size: clamp(42px, 7vw, 84px);
+      letter-spacing: 3px;
+      line-height: 1;
+      color: #fff;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.8), 0 0 60px rgba(232,0,13,0.2);
+    }
+
+    .thar-text-card .thar-sub {
+      font-family: var(--inter);
+      font-size: clamp(13px, 1.8vw, 18px);
+      color: var(--silver);
+      margin-top: 16px;
+      letter-spacing: 1px;
+      line-height: 1.7;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Progress bar at bottom */
+    .thar-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), #ff4444, var(--red));
+      z-index: 20;
+      width: 0%;
+      transition: width 0.05s linear;
+      box-shadow: 0 0 12px var(--red), 0 0 30px rgba(232,0,13,0.4);
+    }
+
+    /* CTA at end */
+    .thar-cta {
+      pointer-events: all;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease 0.3s, transform 0.6s ease 0.3s;
+    }
+    .thar-text-card.active .thar-cta {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Scroll hint at top of section */
+    .thar-scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .thar-scroll-hint.visible { opacity: 1; }
+    .thar-scroll-hint span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+    .thar-scroll-hint .hint-arrows {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      animation: hintBounce 1.5s ease-in-out infinite;
+    }
+    .thar-scroll-hint .hint-arrows svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--red);
+      opacity: 0.7;
+    }
+    .thar-scroll-hint .hint-arrows svg:last-child {
+      opacity: 0.4;
+    }
+    @keyframes hintBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* Loading spinner */
+    .thar-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 30;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      transition: opacity 0.5s ease;
+    }
+    .thar-loader.hidden { opacity: 0; pointer-events: none; }
+    .thar-loader-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #222;
+      border-top-color: var(--red);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .thar-loader-text {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      #thar-scroll { height: 400vh; }
+      .thar-text-card .thar-sub { font-size: 13px; max-width: 90%; }
+    }
+    @media (max-width: 540px) {
+      #thar-scroll { height: 350vh; }
+    }
+
   </style>
 </head>
 
@@ -1596,6 +1809,75 @@
   <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
     <div class="scroll-mouse"></div>
     <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════════════
+     THAR SCROLL-DRIVEN ANIMATION
+════════════════════════════════════════════════════════════════════════ -->
+<section id="thar-scroll">
+  <div class="thar-sticky">
+    <!-- Canvas for frame animation -->
+    <canvas id="tharCanvas"></canvas>
+
+    <!-- Cinematic overlays -->
+    <div class="thar-vignette"></div>
+    <div class="thar-scanlines"></div>
+
+    <!-- Text overlays that appear at different scroll positions -->
+    <div class="thar-text-overlay">
+      <!-- Scene 1: 0-20% -->
+      <div class="thar-text-card" id="tharText1">
+        <p class="thar-label">The Journey Begins</p>
+        <h2 class="thar-headline">BUILT FOR <span class="red-text">ADVENTURE</span></h2>
+        <p class="thar-sub">Every Thar tells a story of trails conquered and horizons chased.</p>
+      </div>
+
+      <!-- Scene 2: 25-45% -->
+      <div class="thar-text-card" id="tharText2">
+        <p class="thar-label">Arriving at ShineX</p>
+        <h2 class="thar-headline">TIME FOR A <span class="red-text">TRANSFORMATION</span></h2>
+        <p class="thar-sub">After every adventure, your vehicle deserves expert care and restoration.</p>
+      </div>
+
+      <!-- Scene 3: 50-70% -->
+      <div class="thar-text-card" id="tharText3">
+        <p class="thar-label">The ShineX Treatment</p>
+        <h2 class="thar-headline">PRECISION <span class="red-text">DETAILING</span></h2>
+        <p class="thar-sub">Professional washing, clay bar treatment, polish, and ceramic coating applied with meticulous care.</p>
+      </div>
+
+      <!-- Scene 4: 75-100% -->
+      <div class="thar-text-card" id="tharText4">
+        <p class="thar-label">The Result</p>
+        <h2 class="thar-headline">SHOWROOM <span class="red-text">PERFECTION</span></h2>
+        <p class="thar-sub">Mirror finish. Deep gloss. Total protection. Ready for the next adventure.</p>
+        <div class="thar-cta" style="margin-top: 32px;">
+          <a href="https://wa.me/919916444888" target="_blank" rel="noopener" class="btn btn-red">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Book Your Thar's Spa Day
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll progress bar -->
+    <div class="thar-progress-bar" id="tharProgress"></div>
+
+    <!-- Scroll hint -->
+    <div class="thar-scroll-hint" id="tharScrollHint">
+      <span>Scroll to explore</span>
+      <div class="hint-arrows">
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></svg>
+      </div>
+    </div>
+
+    <!-- Loading state -->
+    <div class="thar-loader" id="tharLoader">
+      <div class="thar-loader-spinner"></div>
+      <span class="thar-loader-text">Loading Experience…</span>
+    </div>
   </div>
 </section>
 
@@ -2619,6 +2901,138 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
   });
+
+  /* ═══════════════════════════════════════════════════════════════════
+     THAR SCROLL-DRIVEN FRAME ANIMATION
+  ═══════════════════════════════════════════════════════════════════ */
+  (function initTharScroll() {
+    const TOTAL_FRAMES = 96;
+    const FRAME_PATH   = 'thar images/frames-web/frame_';
+    const canvas  = document.getElementById('tharCanvas');
+    const ctx     = canvas.getContext('2d');
+    const section = document.getElementById('thar-scroll');
+    const loader  = document.getElementById('tharLoader');
+    const progBar = document.getElementById('tharProgress');
+    const hint    = document.getElementById('tharScrollHint');
+
+    // Text card elements
+    const cards = [
+      { el: document.getElementById('tharText1'), start: 0.00, end: 0.22 },
+      { el: document.getElementById('tharText2'), start: 0.23, end: 0.47 },
+      { el: document.getElementById('tharText3'), start: 0.48, end: 0.72 },
+      { el: document.getElementById('tharText4'), start: 0.73, end: 1.00 }
+    ];
+
+    // Preload all frames
+    const frames = [];
+    let loadedCount = 0;
+    let allLoaded = false;
+    let currentFrame = 0;
+
+    function padNum(n) {
+      return String(n).padStart(3, '0');
+    }
+
+    function resizeCanvas() {
+      canvas.width  = window.innerWidth  * (window.devicePixelRatio > 1 ? 1.5 : 1);
+      canvas.height = window.innerHeight * (window.devicePixelRatio > 1 ? 1.5 : 1);
+      drawFrame(currentFrame);
+    }
+
+    function drawFrame(idx) {
+      if (!frames[idx] || !frames[idx].complete) return;
+      const img = frames[idx];
+      const cw = canvas.width;
+      const ch = canvas.height;
+
+      // Cover-fit the image
+      const imgRatio = img.naturalWidth / img.naturalHeight;
+      const canvasRatio = cw / ch;
+      let drawW, drawH, dx, dy;
+      if (canvasRatio > imgRatio) {
+        drawW = cw;
+        drawH = cw / imgRatio;
+        dx = 0;
+        dy = (ch - drawH) / 2;
+      } else {
+        drawH = ch;
+        drawW = ch * imgRatio;
+        dy = 0;
+        dx = (cw - drawW) / 2;
+      }
+
+      ctx.clearRect(0, 0, cw, ch);
+      ctx.drawImage(img, dx, dy, drawW, drawH);
+    }
+
+    // Load frames with priority – first frame immediately, rest progressively
+    function loadFrames() {
+      for (let i = 0; i < TOTAL_FRAMES; i++) {
+        const img = new Image();
+        img.src = FRAME_PATH + padNum(i) + '.jpg';
+        img.onload = () => {
+          loadedCount++;
+          if (i === 0) {
+            drawFrame(0);
+          }
+          if (loadedCount >= TOTAL_FRAMES) {
+            allLoaded = true;
+            loader.classList.add('hidden');
+            hint.classList.add('visible');
+            // Hide hint after a few seconds
+            setTimeout(() => hint.classList.remove('visible'), 4000);
+          }
+        };
+        frames[i] = img;
+      }
+    }
+
+    // Scroll handler
+    function onScroll() {
+      const rect = section.getBoundingClientRect();
+      const sectionH = section.offsetHeight;
+      const viewH = window.innerHeight;
+
+      // Calculate how far we've scrolled through the section
+      // Progress 0 = section just entered, 1 = section about to leave
+      const scrolled = -rect.top;
+      const totalRange = sectionH - viewH;
+      const progress = Math.max(0, Math.min(1, scrolled / totalRange));
+
+      // Map progress to frame index
+      const frameIdx = Math.min(TOTAL_FRAMES - 1, Math.floor(progress * TOTAL_FRAMES));
+
+      if (frameIdx !== currentFrame) {
+        currentFrame = frameIdx;
+        drawFrame(currentFrame);
+      }
+
+      // Update progress bar
+      progBar.style.width = (progress * 100) + '%';
+
+      // Update text cards
+      cards.forEach(card => {
+        if (progress >= card.start && progress <= card.end) {
+          card.el.classList.add('active');
+        } else {
+          card.el.classList.remove('active');
+        }
+      });
+
+      // Hide hint once user starts scrolling
+      if (progress > 0.02) {
+        hint.classList.remove('visible');
+      }
+    }
+
+    // Initialize
+    resizeCanvas();
+    loadFrames();
+    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Initial call
+    onScroll();
+  })();
 
 </script>
 
