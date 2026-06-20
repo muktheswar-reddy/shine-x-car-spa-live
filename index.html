@@ -659,287 +659,269 @@
     /* ════════════════════════════════════════════════════════════════════
        RECLINERS — STAR SERVICE
     ════════════════════════════════════════════════════════════════════ */
-    #booking {
-      padding: 120px 0;
-      background: var(--black2);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Edge glow */
-    #booking::before,
-    #booking::after {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0;
-      width: 200px;
-      pointer-events: none;
-    }
-    #booking::before {
-      left: 0;
-      background: linear-gradient(90deg, rgba(232,0,13,0.12), transparent);
-    }
-    #booking::after {
-      right: 0;
-      background: linear-gradient(-90deg, rgba(232,0,13,0.12), transparent);
-    }
-
     /* ════════════════════════════════════════════════════════════════════
-       BOOKING SECTION
+       GALLERY SECTION
     ════════════════════════════════════════════════════════════════════ */
-    #booking {
+    #gallery {
       padding: 100px 0;
       background: var(--black);
       border-top: 1px solid #1a1a1a;
+      position: relative;
     }
 
-    .booking-wrapper {
-      max-width: 860px;
+    .gallery-wrapper {
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 0 20px;
     }
 
-    .booking-heading {
+    .gallery-intro-container {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      margin-bottom: 60px;
+      text-align: left;
+      background: linear-gradient(135deg, #0a0a0a, #141414);
+      padding: 40px;
+      border-radius: 12px;
+      border: 1px solid #1a1a1a;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+    }
+    .intro-right {
+      border-left: 1px solid #222;
+      padding-left: 40px;
+    }
+    @media (max-width: 900px) {
+      .gallery-intro-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 30px;
+      }
+      .intro-right {
+        border-left: none;
+        border-top: 1px solid #222;
+        padding-left: 0;
+        padding-top: 30px;
+      }
+    }
+
+    .gallery-heading {
       font-family: var(--bebas);
       font-size: clamp(42px, 7vw, 80px);
       letter-spacing: 4px;
       line-height: 1;
       color: var(--white);
       margin-bottom: 8px;
+      text-align: center;
     }
-    .booking-heading span { color: var(--red); }
+    .gallery-heading span { color: var(--red); }
 
-    .booking-sub {
-      font-size: 15px;
+    .gallery-sub {
+      font-size: 16px;
       color: var(--gray);
       line-height: 1.8;
-      margin-bottom: 48px;
-      max-width: 580px;
+      margin-bottom: 50px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
     }
 
-    /* Step Labels */
-    .bk-step {
-      margin-bottom: 36px;
-    }
-    .bk-step-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .bk-step-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(232,0,13,0.2);
-    }
-
-    /* Vehicle type pills */
-    .bk-vehicle-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .bk-pill {
-      cursor: pointer;
-      border: 1.5px solid #2a2a2a;
-      border-radius: 100px;
-      padding: 10px 22px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--silver);
-      background: var(--black3);
-      transition: border-color 0.25s, background 0.25s, color 0.25s, transform 0.2s;
-      user-select: none;
-    }
-    .bk-pill:hover { border-color: var(--red); color: var(--white); }
-    .bk-pill.selected {
-      border-color: var(--red);
-      background: rgba(226,3,8,0.12);
-      color: var(--white);
-      transform: scale(1.04);
-    }
-
-    /* Service select */
-    .bk-service-grid {
+    /* Video Grid */
+    .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
     }
-    .bk-service-card {
+
+    /* Large video cards */
+    .gallery-card {
+      position: relative;
+      background: #0c0c0c;
+      border: 1px solid #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 9/16;
       cursor: pointer;
-      background: var(--black3);
-      border: 1.5px solid #222;
-      border-radius: 8px;
-      padding: 16px 18px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: border-color 0.25s, background 0.25s, transform 0.2s;
-    }
-    .bk-service-card:hover { border-color: rgba(226,3,8,0.5); transform: translateY(-2px); }
-    .bk-service-card.selected {
-      border-color: var(--red);
-      background: rgba(226,3,8,0.1);
-      transform: translateY(-2px);
-    }
-    .bk-service-card .sc-icon { font-size: 22px; line-height: 1; flex-shrink: 0; }
-    .bk-service-card .sc-name { font-size: 13px; font-weight: 600; color: var(--white); line-height: 1.4; }
-
-    /* Date input */
-    .bk-date-input {
-      background: var(--black3);
-      border: 1.5px solid #2a2a2a;
-      border-radius: 8px;
-      color: var(--white);
-      font-size: 15px;
-      padding: 14px 18px;
-      width: 100%;
-      max-width: 320px;
-      outline: none;
-      transition: border-color 0.25s;
-      font-family: var(--sans);
-      color-scheme: dark;
-    }
-    .bk-date-input:focus { border-color: var(--red); }
-
-    /* Time slots */
-    .bk-slots-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .bk-slot {
-      cursor: pointer;
-      border: 1.5px solid #2a2a2a;
-      border-radius: 6px;
-      padding: 10px 18px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--silver);
-      background: var(--black3);
-      transition: border-color 0.25s, background 0.25s, color 0.25s;
-      user-select: none;
-    }
-    .bk-slot:hover { border-color: var(--red); color: var(--white); }
-    .bk-slot.selected {
-      border-color: var(--red);
-      background: rgba(226,3,8,0.12);
-      color: var(--white);
-    }
-
-    /* Text inputs */
-    .bk-field {
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.3s, box-shadow 0.4s;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      flex: 1;
-      min-width: 220px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
-    .bk-field label {
+
+    .gallery-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--red);
+      box-shadow: 0 15px 40px rgba(232,0,13,0.2);
+    }
+
+    .gallery-video-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .gallery-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-card:hover video {
+      transform: scale(1.05);
+    }
+
+    /* Play button overlay & hover styling */
+    .gallery-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.4) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      z-index: 2;
+      transition: background 0.3s ease;
+    }
+
+    .gallery-card:hover .gallery-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0.2) 100%);
+    }
+
+    .gallery-tag {
+      align-self: flex-start;
+      background: var(--red);
+      color: #fff;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--gray);
-    }
-    .bk-field input,
-    .bk-field textarea {
-      background: var(--black3);
-      border: 1.5px solid #2a2a2a;
-      border-radius: 6px;
-      color: var(--white);
-      font-size: 14px;
-      padding: 12px 16px;
-      outline: none;
-      font-family: var(--sans);
-      transition: border-color 0.25s;
-      resize: none;
-    }
-    .bk-field input:focus,
-    .bk-field textarea:focus { border-color: var(--red); }
-    .bk-fields-row {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    /* Submit */
-    .bk-submit {
-      margin-top: 44px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .bk-whatsapp-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: #25d366;
-      color: #fff;
-      border: none;
+      padding: 6px 14px;
       border-radius: 4px;
-      padding: 18px 40px;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-      font-family: var(--sans);
-      box-shadow: 0 0 0 rgba(37,211,102,0);
-    }
-    .bk-whatsapp-btn:hover {
-      background: #1ebe5d;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(37,211,102,0.3);
-    }
-    .bk-note {
-      font-size: 12px;
-      color: var(--gray);
-      line-height: 1.7;
+      box-shadow: 0 4px 10px rgba(232,0,13,0.3);
     }
 
-    /* Success banner */
-    .bk-success {
-      display: none;
-      text-align: center;
-      padding: 60px 20px;
-      animation: fadeInUp 0.5s ease;
+    .gallery-play-btn {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 68px; height: 68px;
+      background: rgba(232,0,13,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 20px rgba(232,0,13,0.4);
+      pointer-events: none;
+      z-index: 3;
     }
-    .bk-success.show { display: block; }
-    .bk-success-icon {
-      font-size: 64px;
-      margin-bottom: 20px;
-      animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1);
+
+    .gallery-play-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: #fff;
+      margin-left: 4px;
     }
-    @keyframes popIn {
-      0% { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+
+    .gallery-card:hover .gallery-play-btn {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: var(--red);
+      box-shadow: 0 0 35px rgba(232,0,13,0.8);
     }
-    .bk-success h3 {
+
+    .gallery-card-info {
+      color: #fff;
+    }
+
+    .gallery-card-title {
       font-family: var(--bebas);
-      font-size: 40px;
-      letter-spacing: 3px;
-      color: #25d366;
-      margin-bottom: 12px;
-    }
-    .bk-success p {
-      font-size: 15px;
-      color: var(--silver);
-      line-height: 1.8;
-      max-width: 420px;
-      margin: 0 auto;
+      font-size: 24px;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
     }
 
-    @media (max-width: 600px) {
-      .bk-service-grid { grid-template-columns: 1fr 1fr; }
-      .bk-slot { font-size: 12px; padding: 9px 14px; }
+    .gallery-card-desc {
+      font-size: 13px;
+      color: var(--gray);
+      line-height: 1.4;
+    }
+
+    /* Video Modal */
+    .video-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .video-modal.show {
+      display: flex;
+      opacity: 1;
+    }
+
+    .video-modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 440px;
+      aspect-ratio: 9/16;
+      border: 2px solid #222;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-modal-content video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .video-modal-close {
+      position: absolute;
+      top: 20px; right: 20px;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, transform 0.2s;
+      z-index: 10000;
+    }
+
+    .video-modal-close:hover {
+      background: var(--red);
+      transform: scale(1.1);
+    }
+
+    /* Load more button */
+    .gallery-load-more {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+      }
+      .video-modal-content {
+        width: 95%;
+      }
     }
 
     /* ════════════════════════════════════════════════════════════════════
@@ -989,79 +971,127 @@
     }
 
     /* ════════════════════════════════════════════════════════════════════
-       HOW TO BOOK
+       VEHICLES WE SERVICE
     ════════════════════════════════════════════════════════════════════ */
-    #book {
+    #vehicles {
       padding: 120px 0;
       background: var(--black2);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      position: relative;
     }
 
-    .book-header {
+    .vehicles-header {
       text-align: center;
-      margin-bottom: 72px;
+      margin-bottom: 60px;
     }
 
-    .steps-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: wrap;
+    .vehicles-subtitle {
+      max-width: 700px;
+      margin: 20px auto 0;
+      font-size: 15px;
+      color: var(--gray);
+      line-height: 1.8;
     }
 
-    .step {
-      flex: 1;
-      min-width: 200px;
-      max-width: 300px;
-      text-align: center;
+    .vehicles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
       padding: 0 20px;
     }
 
-    .step-number {
-      width: 72px; height: 72px;
-      border-radius: 50%;
+    .vehicle-card {
+      background: var(--black);
+      border: 1px solid rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 32px 24px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .vehicle-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 3px;
       background: var(--red);
-      color: #fff;
-      font-family: var(--bebas);
-      font-size: 32px;
-      letter-spacing: 1px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .vehicle-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(232,0,13,0.3);
+      box-shadow: 0 15px 40px rgba(232,0,13,0.1);
+    }
+
+    .vehicle-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .vehicle-icon-wrapper {
+      width: 60px;
+      height: 60px;
+      background: rgba(232,0,13,0.05);
+      border: 1px solid rgba(232,0,13,0.1);
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
-      position: relative;
-      box-shadow: 0 0 30px rgba(232,0,13,0.3);
+      margin-bottom: 24px;
+      transition: all 0.4s ease;
     }
 
-    .step-title {
-      font-size: 17px;
+    .vehicle-card:hover .vehicle-icon-wrapper {
+      background: var(--red);
+      border-color: var(--red);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(232,0,13,0.4);
+    }
+
+    .vehicle-icon {
+      font-size: 28px;
+      transition: all 0.4s ease;
+      display: inline-block;
+    }
+
+    .vehicle-card:hover .vehicle-icon {
+      transform: scale(1.15);
+    }
+
+    .vehicle-name {
+      font-size: 20px;
       font-weight: 700;
       color: var(--white);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
     }
 
-    .step-desc {
-      font-size: 13px;
+    .vehicle-desc {
+      font-size: 13.5px;
       color: var(--gray);
       line-height: 1.7;
     }
 
-    .step-arrow {
-      align-self: flex-start;
-      padding-top: 24px;
-      font-size: 28px;
-      color: var(--red);
-      opacity: 0.6;
-    }
-
-    .book-note {
+    .vehicles-footer {
       text-align: center;
-      margin-top: 56px;
-      font-size: 13px;
-      color: var(--gray);
+      margin-top: 60px;
+      font-size: 14px;
+      color: var(--silver);
       letter-spacing: 0.5px;
+      font-weight: 500;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.8;
+      padding: 0 20px;
     }
-    .book-note strong { color: var(--red); }
 
     /* ════════════════════════════════════════════════════════════════════
        CONTACT
@@ -1253,58 +1283,6 @@
       .founder-links  { justify-content: center; }
     }
 
-    /* ─── LIGHT MODE ───────────────────────────────────────────────────── */
-    body.light-mode {
-      --black:  #F2EFEC;
-      --black2: #E8E4E0;
-      --black3: #DDD9D5;
-      --silver: #505050;
-      --white:  #181818;
-      --gray:   #707070;
-      background: var(--black);
-      color: var(--white);
-    }
-    body.light-mode #navbar.scrolled {
-      background: rgba(242,239,236,0.97);
-      border-bottom-color: var(--red);
-    }
-    body.light-mode .mobile-nav {
-      background: rgba(242,239,236,0.98);
-    }
-    body.light-mode #home { background: var(--black); }
-    body.light-mode .ft-logo-img {
-      filter: invert(1) hue-rotate(180deg) drop-shadow(0 0 1px rgba(0,0,0,0.5));
-    }
-    body.light-mode .hero-logo .ft-logo-img {
-      mix-blend-mode: normal;
-    }
-    body.light-mode .service-card,
-    body.light-mode .stat-card,
-    body.light-mode .recliner-card,
-    body.light-mode .founder-card {
-      border-color: #ccc;
-    }
-    body.light-mode ::selection { background: var(--red); color: #fff; }
-    body.light-mode ::-webkit-scrollbar-track { background: var(--black); }
-
-    /* ─── THEME TOGGLE BUTTON ─────────────────────────────────────────── */
-    .theme-toggle {
-      width: 34px; height: 34px;
-      border: none; background: transparent;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--silver);
-      transition: color 0.3s, background 0.3s;
-      border-radius: 50%;
-      padding: 0; flex-shrink: 0;
-    }
-    .theme-toggle:hover { color: var(--white); }
-    .theme-toggle svg { width: 17px; height: 17px; }
-    .icon-sun  { display: none; }
-    .icon-moon { display: block; }
-    body.light-mode .icon-sun  { display: block; }
-    body.light-mode .icon-moon { display: none; }
-
     .footer-logo {
       margin: 0 auto 4px;
     }
@@ -1402,7 +1380,7 @@
       .hero-sub      { letter-spacing: 22px; }
       .hero-tagline  { font-size: 17px; margin-bottom: 60px; }
 
-      #about, #services, #booking, #book, #contact { padding: 160px 0; }
+      #about, #services, #gallery, #vehicles, #contact { padding: 160px 0; }
 
       .section-heading { font-size: 88px; }
       .section-label   { font-size: 13px; letter-spacing: 5px; }
@@ -1475,8 +1453,8 @@
 
       #about    { padding: 80px 0; }
       #services { padding: 80px 0; }
-      #booking { padding: 80px 0; }
-      #book     { padding: 80px 0; }
+      #gallery { padding: 80px 0; }
+      #vehicles { padding: 80px 0; }
       #contact  { padding: 80px 0; }
 
       .car-badges { padding: 0 10px; }
@@ -1546,7 +1524,7 @@
 <nav class="mobile-nav" id="mobileNav">
   <a href="#home"     onclick="closeMobile()">Home</a>
   <a href="#services" onclick="closeMobile()">Services</a>
-  <a href="#booking" onclick="closeMobile()">Book Now</a>
+  <a href="#gallery" onclick="closeMobile()">Gallery</a>
   <a href="#about"    onclick="closeMobile()">About</a>
   <a href="#contact"  onclick="closeMobile()">Contact</a>
 </nav>
@@ -1559,16 +1537,13 @@
   <ul class="nav-links">
     <li><a href="#home">Home</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#booking">Book Now</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="https://wa.me/919916444888" target="_blank" rel="noopener" class="nav-cta">DIRECT CONTACT</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:10px;">
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    </button>
+
     <div class="hamburger" id="hamburger" onclick="toggleMobile()">
       <span></span><span></span><span></span>
     </div>
@@ -1632,9 +1607,9 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <p class="section-label">Our Legacy</p>
-        <h2 class="section-heading">25+ Years of<br /><span class="red-text">Excellence in Car Care</span></h2>
+        <h2 class="section-heading">5+ Years of<br /><span class="red-text">Excellence in Car Care</span></h2>
         <p>
-          At Shine X Car Spa, we believe every vehicle deserves more than just a wash—it deserves perfection. Located in the heart of Bengaluru, we have spent over 25 years delivering premium car detailing, ceramic coating, paint protection, and restoration services that bring every vehicle back to showroom condition.
+          At Shine X Car Spa, we believe every vehicle deserves more than just a wash—it deserves perfection. Located in the heart of Bengaluru, we have spent over 5 years delivering premium car detailing, ceramic coating, paint protection, and restoration services that bring every vehicle back to showroom condition.
         </p>
         <p style="margin-top:16px;">
           From luxury sedans and SUVs to performance machines, our expert team combines cutting-edge technology, premium products, and unmatched craftsmanship to protect and enhance every inch of your vehicle.
@@ -1651,7 +1626,7 @@
       </div>
       <div class="stats-grid">
         <div class="stat-card reveal reveal-delay-1">
-          <div class="stat-number" data-target="25" data-suffix="+">0</div>
+          <div class="stat-number" data-target="5" data-suffix="+">0</div>
           <div class="stat-label">Years of Experience</div>
         </div>
         <div class="stat-card reveal reveal-delay-2">
@@ -1827,241 +1802,279 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════════════════
-     SECTION 4 — ONLINE BOOKING
+     SECTION 4 — CAR WASH TRANSFORMATION GALLERY
 ════════════════════════════════════════════════════════════════════════ -->
-<section id="booking">
-  <div class="section-inner">
-    <div class="booking-wrapper reveal">
-
-      <p class="section-label">🚗🏍️ Book Your Service</p>
-      <h2 class="booking-heading">Premium Car &amp; Bike <span>Spa Booking</span></h2>
-      <p class="booking-sub">Your vehicle deserves professional care. Select your vehicle, choose a service, pick a time slot, and confirm your booking instantly through WhatsApp.</p>
-
-      <!-- BOOKING FORM -->
-      <div id="bookingForm">
-
-        <!-- STEP 1: VEHICLE TYPE -->
-        <div class="bk-step">
-          <div class="bk-step-label">Step 1 — Select Vehicle Type</div>
-          <div class="bk-vehicle-grid" id="vehicleGrid">
-            <div class="bk-pill" data-vehicle="Car">🚗 Car</div>
-            <div class="bk-pill" data-vehicle="SUV">🚙 SUV</div>
-            <div class="bk-pill" data-vehicle="Luxury Car">💎 Luxury Car</div>
-            <div class="bk-pill" data-vehicle="Bike">🏍️ Bike</div>
-            <div class="bk-pill" data-vehicle="Scooter">🛵 Scooter</div>
-          </div>
-        </div>
-
-        <!-- STEP 2: SERVICE -->
-        <div class="bk-step">
-          <div class="bk-step-label">Step 2 — Choose Service</div>
-          <div class="bk-service-grid" id="serviceGrid">
-            <!-- dynamically populated -->
-          </div>
-        </div>
-
-        <!-- STEP 3: DATE -->
-        <div class="bk-step">
-          <div class="bk-step-label">Step 3 — Select Date</div>
-          <input type="date" class="bk-date-input" id="bookingDate" />
-        </div>
-
-        <!-- STEP 4: TIME SLOT -->
-        <div class="bk-step">
-          <div class="bk-step-label">Step 4 — Select Time Slot</div>
-          <div class="bk-slots-grid" id="slotsGrid">
-            <div class="bk-slot" data-slot="09:00 AM – 10:00 AM">09:00 AM – 10:00 AM</div>
-            <div class="bk-slot" data-slot="10:00 AM – 11:00 AM">10:00 AM – 11:00 AM</div>
-            <div class="bk-slot" data-slot="11:00 AM – 12:00 PM">11:00 AM – 12:00 PM</div>
-            <div class="bk-slot" data-slot="12:00 PM – 01:00 PM">12:00 PM – 01:00 PM</div>
-            <div class="bk-slot" data-slot="02:00 PM – 03:00 PM">02:00 PM – 03:00 PM</div>
-            <div class="bk-slot" data-slot="03:00 PM – 04:00 PM">03:00 PM – 04:00 PM</div>
-            <div class="bk-slot" data-slot="04:00 PM – 05:00 PM">04:00 PM – 05:00 PM</div>
-            <div class="bk-slot" data-slot="05:00 PM – 06:00 PM">05:00 PM – 06:00 PM</div>
-            <div class="bk-slot" data-slot="06:00 PM – 07:00 PM">06:00 PM – 07:00 PM</div>
-            <div class="bk-slot" data-slot="07:00 PM – 08:00 PM">07:00 PM – 08:00 PM</div>
-            <div class="bk-slot" data-slot="08:00 PM – 09:00 PM">08:00 PM – 09:00 PM</div>
-          </div>
-          <p style="font-size:12px; color:var(--gray); margin-top:12px; line-height:1.6;">Each booking is allocated a dedicated 1-hour service window. Operating hours: 8:00 AM – 9:00 PM, open 365 days.</p>
-        </div>
-
-        <!-- STEP 5: CUSTOMER DETAILS -->
-        <div class="bk-step">
-          <div class="bk-step-label">Step 5 — Customer Details</div>
-          <div class="bk-fields-row">
-            <div class="bk-field">
-              <label for="custName">👤 Full Name</label>
-              <input type="text" id="custName" placeholder="e.g. Ramesh Kumar" autocomplete="name" />
-            </div>
-            <div class="bk-field">
-              <label for="custPhone">📞 Mobile Number</label>
-              <input type="tel" id="custPhone" placeholder="+91 98765 43210" autocomplete="tel" />
-            </div>
-          </div>
-          <div class="bk-fields-row" style="margin-top:14px;">
-            <div class="bk-field">
-              <label for="custModel">🚘 Vehicle Model</label>
-              <input type="text" id="custModel" placeholder="e.g. Honda City 2023" />
-            </div>
-            <div class="bk-field">
-              <label for="custNote">📝 Special Instructions (Optional)</label>
-              <textarea id="custNote" rows="2" placeholder="Any special requests or notes..."></textarea>
-            </div>
-          </div>
-        </div>
-
-        <!-- SUBMIT -->
-        <div class="bk-submit">
-          <button class="bk-whatsapp-btn" id="bookNowBtn" onclick="submitBooking()">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Book Now on WhatsApp
-          </button>
-          <p class="bk-note">We'll confirm your appointment within minutes.<br />Open daily 8:00 AM – 9:00 PM · Marathahalli, Bengaluru</p>
-        </div>
-
-      </div><!-- /bookingForm -->
-
-      <!-- SUCCESS STATE -->
-      <div class="bk-success" id="bookingSuccess">
-        <div class="bk-success-icon">✅</div>
-        <h3>Booking Request Sent!</h3>
-        <p>Thank you for choosing Shine X Car Spa.<br />Our team will contact you shortly to confirm your appointment.</p>
-        <p style="margin-top:20px; font-size:20px;">🚗 See You Soon!</p>
-        <button onclick="resetBooking()" style="margin-top:28px; background:transparent; border:1.5px solid var(--red); color:var(--red); padding:12px 30px; border-radius:4px; cursor:pointer; font-size:13px; font-weight:700; letter-spacing:1px; font-family:var(--sans); transition:background 0.2s, color 0.2s;" onmouseover="this.style.background='var(--red)';this.style.color='#fff';" onmouseout="this.style.background='transparent';this.style.color='var(--red)';">Make Another Booking</button>
+<section id="gallery">
+  <div class="gallery-wrapper reveal">
+    <p class="section-label">🎬 Showroom Transformations</p>
+    <h2 class="gallery-heading">Our Transformations <span>in Action</span></h2>
+    
+    <div class="gallery-intro-container">
+      <div class="intro-left">
+        <h3 style="font-family: var(--bebas); font-size: 28px; letter-spacing: 1px; color: var(--white); margin-bottom: 16px;">Real Vehicles. Real Results. Real Shine.</h3>
+        <p style="font-size: 15px; color: var(--gray); line-height: 1.8; margin-bottom: 20px;">
+          Watch real ShineX Car Spa transformations through our latest reels and videos. From everyday vehicles to premium machines, our team delivers professional cleaning, detailing, polishing, and protection services with outstanding results.
+        </p>
+        <p style="font-size: 15px; color: var(--gray); line-height: 1.8; margin-bottom: 0;">
+          Every reel showcases real customer vehicles and the quality, care, and attention to detail that make ShineX Car Spa a trusted destination for vehicle care.
+        </p>
       </div>
-
+      <div class="intro-right">
+        <h4 style="font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 20px;">We Proudly Service:</h4>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px;">
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--white); font-weight: 600;"><span style="color: var(--red); font-weight: bold;">•</span> Cars &amp; SUVs</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--white); font-weight: 600;"><span style="color: var(--red); font-weight: bold;">•</span> Luxury Vehicles</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--white); font-weight: 600;"><span style="color: var(--red); font-weight: bold;">•</span> Mahindra Thar</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--white); font-weight: 600;"><span style="color: var(--red); font-weight: bold;">•</span> Bikes &amp; Scooters</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--white); font-weight: 600;"><span style="color: var(--red); font-weight: bold;">•</span> Commercial Vehicles</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--white); font-weight: 600;"><span style="color: var(--red); font-weight: bold;">•</span> JCBs &amp; Heavy Equipment</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--white); font-weight: 600;"><span style="color: var(--red); font-weight: bold;">•</span> Pickup Trucks</div>
+          <div style="display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--white); font-weight: 600;"><span style="color: var(--red); font-weight: bold;">•</span> Construction Vehicles</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Videos will be dynamically loaded here by JS -->
+    </div>
+    
+    <div class="gallery-load-more" id="loadMoreContainer">
+      <button class="btn btn-red" id="loadMoreBtn" onclick="loadMoreVideos()">Load More Videos</button>
     </div>
   </div>
 </section>
 
+<!-- Video Modal -->
+<div class="video-modal" id="videoModal" onclick="closeVideoModal(event)">
+  <button class="video-modal-close" onclick="closeVideoModal(event)">&times;</button>
+  <div class="video-modal-content" onclick="event.stopPropagation()">
+    <video id="modalVideo" src="" controls autoplay playsinline></video>
+  </div>
+</div>
+
 <script>
-  /* ── BOOKING FORM LOGIC ─────────────────────────────────────────── */
-  const SERVICES = {
-    car: [
-      { icon: '🧼', name: 'Basic Wash' },
-      { icon: '✨', name: 'Premium Foam Wash' },
-      { icon: '💎', name: 'Exterior Detailing' },
-      { icon: '🛡️', name: 'Ceramic Coating' },
-      { icon: '🧹', name: 'Deep Interior Cleaning' },
-      { icon: '🪑', name: 'Leather Seat Treatment' },
-      { icon: '🪟', name: 'Glass & Windshield Treatment' },
-      { icon: '🛞', name: 'Wheel & Tyre Detailing' },
-      { icon: '💨', name: 'AC Vent Sanitization' },
-      { icon: '🚘', name: 'Complete Car Spa Package' },
-    ],
-    bike: [
-      { icon: '🏍️', name: 'Basic Bike Wash' },
-      { icon: '✨', name: 'Premium Foam Wash' },
-      { icon: '💎', name: 'Bike Detailing' },
-      { icon: '🛡️', name: 'Ceramic Coating' },
-      { icon: '⚙️', name: 'Chain Cleaning & Lubrication' },
-      { icon: '🛞', name: 'Wheel & Tyre Detailing' },
-      { icon: '🏍️', name: 'Complete Bike Spa Package' },
-    ]
-  };
+  // ─── GALLERY DATA ────────────────────────────────────────────────────────
+  const GALLERY_VIDEOS = [
+    {
+      src: 'videos/New Folder With Items/VID-20260620-WA0084.mp4',
+      tag: 'Before / After',
+      title: 'Before & After Transformation',
+      desc: 'Witness stunning vehicle makeovers with deep cleaning, polishing, and premium detailing for a showroom-like shine. ✨🚗'
+    },
+    {
+      src: 'videos/New Folder With Items/VID-20260620-WA0085.mp4',
+      tag: 'Heavy Equipment',
+      title: 'JCB & Heavy Detailing',
+      desc: 'Specialized restoration wash and protection for construction and heavy-duty machinery. 🚜⚡'
+    },
+    {
+      src: 'videos/New Folder With Items/VID-20260620-WA0086.mp4',
+      tag: 'Fleet Detailing',
+      title: 'Commercial Fleet Spa',
+      desc: 'Complete commercial vehicle wash and protective finishing for pickup trucks and vans. 🚚✨'
+    },
+    {
+      src: 'videos/VID-20260620-WA0066.mp4',
+      tag: 'Foam Wash',
+      title: 'Deep Active Foam Bath',
+      desc: 'Watch our high-density snow foam lift and dissolve stubborn road grime safely.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0011.mp4',
+      tag: 'Ceramic Coating',
+      title: '9H Ceramic Shield Application',
+      desc: 'Precision application of multi-year ceramic coating for ultra-slickness and hydrophobic gloss.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0062.mp4',
+      tag: 'Thar Care',
+      title: 'Thar Special Care',
+      desc: 'Specialized cleaning and detailing for Mahindra Thar. Deep interior care, exterior protection, tire shine, and premium finishing for an adventure-ready look. 🚙✨'
+    },
+    {
+      src: 'videos/VID-20260620-WA0055.mp4',
+      tag: 'Beading Test',
+      title: 'Extreme Hydrophobic Action',
+      desc: 'See water bead and sheet off instantly from our fresh ceramic coating.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0051.mp4',
+      tag: 'Correction',
+      title: 'Paint Correction Polish',
+      desc: 'Restoring depth and clarity by machine-polishing away swirls and scratches.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0052.mp4',
+      tag: 'Gloss Check',
+      title: 'Mirror Gloss Finish',
+      desc: 'Showcasing the high-intensity reflection of a fully detailed luxury sedan.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0063.mp4',
+      tag: 'Underbody',
+      title: 'Chassis Deep Clean',
+      desc: 'High-pressure undercarriage washing to clean out salt, mud, and road debris.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0063.mp4',
+      tag: 'Engine Detail',
+      title: 'Engine Bay Detailing',
+      desc: 'Safe, meticulous cleaning and matte conditioning of the engine compartment.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0050.mp4',
+      tag: 'Matte Care',
+      title: 'Matte Finish Protection',
+      desc: 'Specialized non-gloss conditioning for matte vinyl wrap and paint finishes.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0060.mp4',
+      tag: 'Full Spa',
+      title: 'Premium SUV Transformation',
+      desc: 'A complete top-to-bottom detail returning this large vehicle to showroom condition.'
+    },
+    {
+      src: 'videos/New Folder With Items/VID-20260620-WA0082.mp4',
+      tag: 'Bike Detailing',
+      title: 'Superbike Precision Care',
+      desc: 'Detailing performance motorcycle fairings, wheels, and chain assembly.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0058.mp4',
+      tag: 'Deep Extraction',
+      title: 'Carpet & Fabric Extraction',
+      desc: 'Extracting years of embedded dirt, spills, and allergens from passenger footwells.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0059.mp4',
+      tag: 'Clay Bar',
+      title: 'Paint Decontamination',
+      desc: 'Running a professional clay bar to extract embedded metallic and organic fallout.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0056.mp4',
+      tag: 'Final Touch',
+      title: 'Signature Finish Spray',
+      desc: 'Final detailer wipe-down using clean microfiber towels for a streak-free glow.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0061.mp4',
+      tag: 'Royal Care',
+      title: 'Supercar Royal Care',
+      desc: 'Ultimate detailing treatment designed exclusively for exotics and luxury supercars, ensuring an immaculate finish fit for royalty. 🏎️👑'
+    },
+    {
+      src: 'videos/VID-20260620-WA0048.mp4',
+      tag: 'Pre-Wash',
+      title: 'Touchless Pre-Wash Treatment',
+      desc: 'Citrus-infused pre-cleaner dissolving abrasive sand before wash mitt contact.'
+    },
+    {
+      src: 'videos/New Folder With Items/VID-20260620-WA0078.mp4',
+      tag: 'Interior',
+      title: 'High-Power Vacuuming',
+      desc: 'Detailing seat rails, pockets, and seams to remove hidden dirt and grit.'
+    },
+    {
+      src: 'videos/VID-20260620-WA0046.mp4',
+      tag: 'Full Wash',
+      title: 'Full Foam Wash',
+      desc: 'Meticulous exterior wash covering every inch of your vehicle with active snow foam. Cleans away road dirt, grease, and grime for a spotless finish. 🧼🚗'
+    },
+    {
+      src: 'videos/VID-20260620-WA0067.mp4',
+      tag: 'Interior Care',
+      title: 'Interior Cleaning with Perfection',
+      desc: 'Meticulous deep cleaning of every dashboard surface, leather seat, and crevice for a spotless, factory-fresh interior. 🧹✨'
+    },
+    {
+      src: 'videos/VID-20260620-WA0068.mp4',
+      tag: 'Bike Care',
+      title: 'Premium Bike Care',
+      desc: 'Expert washing, detailing, polishing, and protection services to keep your bike shining and road-ready. 🏍️✨'
+    }
+  ];
 
-  let selectedVehicle = '', selectedService = '', selectedSlot = '';
+  let videosLoaded = 0;
+  const videosPerLoad = 6;
 
-  // Set minimum booking date to today
-  (function() {
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const dd = String(today.getDate()).padStart(2, '0');
-    document.getElementById('bookingDate').min = `${yyyy}-${mm}-${dd}`;
-    document.getElementById('bookingDate').value = `${yyyy}-${mm}-${dd}`;
-  })();
+  function renderVideoCard(video) {
+    return `
+      <div class="gallery-card" onclick="openVideoModal('${video.src}')" onmouseenter="playPreview(this)" onmouseleave="pausePreview(this)">
+        <div class="gallery-video-wrapper">
+          <video src="${video.src}" loop muted playsinline preload="metadata"></video>
+          <div class="gallery-overlay">
+            <span class="gallery-tag">${video.tag}</span>
+            <div class="gallery-card-info">
+              <h3 class="gallery-card-title">${video.title}</h3>
+              <p class="gallery-card-desc">${video.desc}</p>
+            </div>
+          </div>
+          <div class="gallery-play-btn">
+            <svg viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    `;
+  }
 
-  // Vehicle pill selection
-  document.getElementById('vehicleGrid').addEventListener('click', function(e) {
-    const pill = e.target.closest('.bk-pill');
-    if (!pill) return;
-    document.querySelectorAll('.bk-pill').forEach(p => p.classList.remove('selected'));
-    pill.classList.add('selected');
-    selectedVehicle = pill.dataset.vehicle;
-    selectedService = '';
-    renderServices(selectedVehicle);
+  function loadMoreVideos() {
+    const grid = document.getElementById('galleryGrid');
+    const start = videosLoaded;
+    const end = Math.min(start + videosPerLoad, GALLERY_VIDEOS.length);
+    
+    for (let i = start; i < end; i++) {
+      grid.insertAdjacentHTML('beforeend', renderVideoCard(GALLERY_VIDEOS[i]));
+    }
+    
+    videosLoaded = end;
+    
+    if (videosLoaded >= GALLERY_VIDEOS.length) {
+      document.getElementById('loadMoreContainer').style.display = 'none';
+    }
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', () => {
+    loadMoreVideos();
   });
 
-  function renderServices(vehicle) {
-    const grid = document.getElementById('serviceGrid');
-    const isBike = vehicle === 'Bike' || vehicle === 'Scooter';
-    const list = isBike ? SERVICES.bike : SERVICES.car;
-    grid.innerHTML = list.map(s =>
-      `<div class="bk-service-card" data-service="${s.name}" onclick="selectService(this)">
-        <span class="sc-icon">${s.icon}</span>
-        <span class="sc-name">${s.name}</span>
-      </div>`
-    ).join('');
+  // Play/pause preview on hover
+  function playPreview(card) {
+    const video = card.querySelector('video');
+    if (video) {
+      video.play().catch(err => {
+        // Autoplay blocked/safe catch
+      });
+    }
   }
 
-  function selectService(el) {
-    document.querySelectorAll('.bk-service-card').forEach(c => c.classList.remove('selected'));
-    el.classList.add('selected');
-    selectedService = el.dataset.service;
+  function pausePreview(card) {
+    const video = card.querySelector('video');
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+    }
   }
 
-  // Time slot selection
-  document.getElementById('slotsGrid').addEventListener('click', function(e) {
-    const slot = e.target.closest('.bk-slot');
-    if (!slot) return;
-    document.querySelectorAll('.bk-slot').forEach(s => s.classList.remove('selected'));
-    slot.classList.add('selected');
-    selectedSlot = slot.dataset.slot;
-  });
-
-  // Render default services on load
-  renderServices('Car');
-
-  function submitBooking() {
-    const name = document.getElementById('custName').value.trim();
-    const phone = document.getElementById('custPhone').value.trim();
-    const model = document.getElementById('custModel').value.trim();
-    const note = document.getElementById('custNote').value.trim();
-    const date = document.getElementById('bookingDate').value;
-
-    if (!selectedVehicle) { alert('Please select a vehicle type.'); return; }
-    if (!selectedService) { alert('Please choose a service.'); return; }
-    if (!date) { alert('Please select a date.'); return; }
-    if (!selectedSlot) { alert('Please select a time slot.'); return; }
-    if (!name) { alert('Please enter your name.'); return; }
-    if (!phone) { alert('Please enter your mobile number.'); return; }
-    if (!model) { alert('Please enter your vehicle model.'); return; }
-
-    const dateObj = new Date(date);
-    const formattedDate = dateObj.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-
-    const msg = `Hello Shine X Car Spa,\n\nI'd like to book a service.\n\n` +
-      `👤 Name: ${name}\n` +
-      `📞 Mobile: ${phone}\n` +
-      `🚗 Vehicle Type: ${selectedVehicle}\n` +
-      `🚘 Vehicle Model: ${model}\n` +
-      `✨ Service: ${selectedService}\n` +
-      `📅 Date: ${formattedDate}\n` +
-      `⏰ Time Slot: ${selectedSlot}\n` +
-      (note ? `📝 Special Instructions: ${note}\n` : '') +
-      `\nPlease confirm my booking. Thank you!`;
-
-    const waUrl = 'https://wa.me/919916444888?text=' + encodeURIComponent(msg);
-    window.open(waUrl, '_blank');
-
-    // Show success
-    document.getElementById('bookingForm').style.display = 'none';
-    document.getElementById('bookingSuccess').classList.add('show');
+  // Modal actions
+  function openVideoModal(src) {
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    modalVideo.src = src;
+    modal.classList.add('show');
+    modalVideo.play();
   }
 
-  function resetBooking() {
-    selectedVehicle = ''; selectedService = ''; selectedSlot = '';
-    document.querySelectorAll('.bk-pill').forEach(p => p.classList.remove('selected'));
-    document.querySelectorAll('.bk-slot').forEach(s => s.classList.remove('selected'));
-    document.getElementById('custName').value = '';
-    document.getElementById('custPhone').value = '';
-    document.getElementById('custModel').value = '';
-    document.getElementById('custNote').value = '';
-    renderServices('Car');
-    document.getElementById('bookingSuccess').classList.remove('show');
-    document.getElementById('bookingForm').style.display = '';
-    document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  function closeVideoModal(event) {
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+    modalVideo.pause();
+    modalVideo.src = '';
+    modal.classList.remove('show');
+    if (event) event.stopPropagation();
   }
 </script>
 
@@ -2096,50 +2109,93 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════════════════
-     SECTION 6 — HOW TO BOOK
+     SECTION 6 — VEHICLES WE SERVICE
 ════════════════════════════════════════════════════════════════════════ -->
-<section id="book">
+<section id="vehicles">
   <div class="section-inner">
-    <div class="book-header reveal">
-      <p class="section-label">Simple Process</p>
-      <h2 class="section-heading">How to <span class="red-text">Book</span></h2>
+    <div class="vehicles-header reveal">
+      <p class="section-label">Our Fleet Expertise</p>
+      <h2 class="section-heading">Vehicles We <span class="red-text">Service</span></h2>
+      <p class="vehicles-subtitle">At ShineX Car Spa, we provide professional cleaning and detailing services for a wide range of vehicles.</p>
     </div>
 
-    <div class="steps-row">
-
-      <div class="step reveal reveal-delay-1">
-        <div class="step-number">1</div>
-        <div class="step-title">Select Your Vehicle</div>
-        <p class="step-desc">Choose your car or bike and let us know how you’d like it cared for.</p>
+    <div class="vehicles-grid">
+      <!-- Card 1 -->
+      <div class="vehicle-card reveal reveal-delay-1">
+        <div class="vehicle-icon-wrapper">
+          <span class="vehicle-icon">🚗</span>
+        </div>
+        <h3 class="vehicle-name">Cars &amp; SUVs</h3>
+        <p class="vehicle-desc">From compact hatchbacks to premium family SUVs, we offer meticulous cleaning and protection packages tailored to daily drivers.</p>
       </div>
 
-      <div class="step-arrow reveal">›</div>
-
-      <div class="step reveal reveal-delay-2">
-        <div class="step-number">2</div>
-        <div class="step-title">Book Your Slot</div>
-        <p class="step-desc">Pick your preferred service, date, and available time slot that works best for you.</p>
+      <!-- Card 2 -->
+      <div class="vehicle-card reveal reveal-delay-2">
+        <div class="vehicle-icon-wrapper">
+          <span class="vehicle-icon">🏎️</span>
+        </div>
+        <h3 class="vehicle-name">Luxury Cars</h3>
+        <p class="vehicle-desc">High-end luxury sedans and exotic sports cars treated with ultra-gentle, premium grade ceramic coatings and detailers.</p>
       </div>
 
-      <div class="step-arrow reveal">›</div>
-
-      <div class="step reveal reveal-delay-3">
-        <div class="step-number">3</div>
-        <div class="step-title">Drive In &amp; Shine Out</div>
-        <p class="step-desc">Arrive at Shine X Car Spa and leave with a spotless, showroom-fresh vehicle that turns heads everywhere.</p>
+      <!-- Card 3 -->
+      <div class="vehicle-card reveal reveal-delay-3">
+        <div class="vehicle-icon-wrapper">
+          <span class="vehicle-icon">🚙</span>
+        </div>
+        <h3 class="vehicle-name">Mahindra Thar</h3>
+        <p class="vehicle-desc">Offroad monsters require deep underbody cleaning, heavy mud removal, soft top restoration, and rugged paint sealant.</p>
       </div>
 
+      <!-- Card 4 -->
+      <div class="vehicle-card reveal reveal-delay-4">
+        <div class="vehicle-icon-wrapper">
+          <span class="vehicle-icon">🏍️</span>
+        </div>
+        <h3 class="vehicle-name">Bikes &amp; Scooters</h3>
+        <p class="vehicle-desc">From daily commuters to superbikes, we deliver chain cleaning, chrome polishing, and high-gloss paint correction.</p>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="vehicle-card reveal reveal-delay-1">
+        <div class="vehicle-icon-wrapper">
+          <span class="vehicle-icon">🚚</span>
+        </div>
+        <h3 class="vehicle-name">Commercial Vehicles</h3>
+        <p class="vehicle-desc">Heavy-duty commercial vans and transport trucks cleaned inside and out to project a professional image on the road.</p>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="vehicle-card reveal reveal-delay-2">
+        <div class="vehicle-icon-wrapper">
+          <span class="vehicle-icon">🛻</span>
+        </div>
+        <h3 class="vehicle-name">Pickup Trucks</h3>
+        <p class="vehicle-desc">Tough pickup beds, cargo areas, wheels, and suspension bays scrubbed clean of heavy debris and protected from wear.</p>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="vehicle-card reveal reveal-delay-3">
+        <div class="vehicle-icon-wrapper">
+          <span class="vehicle-icon">🚜</span>
+        </div>
+        <h3 class="vehicle-name">JCBs &amp; Heavy Equipment</h3>
+        <p class="vehicle-desc">Industrial cleaning for earthmovers and tractors, removing hydraulic oils, hardened concrete, mud, and dust build-up.</p>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="vehicle-card reveal reveal-delay-4">
+        <div class="vehicle-icon-wrapper">
+          <span class="vehicle-icon">🏢</span>
+        </div>
+        <h3 class="vehicle-name">Fleet Vehicles</h3>
+        <p class="vehicle-desc">Comprehensive fleet detailing schedules for corporate transport, taxis, and rental companies to keep them pristine.</p>
+      </div>
     </div>
 
-    <p class="book-note reveal">
-      Book ahead to avoid waiting. Walk-ins are welcome whenever slots are available.
+    <p class="vehicles-footer reveal">
+      No matter the size or type of vehicle, our team delivers the same level of care, quality, and attention to detail.
     </p>
-
-    <div style="text-align:center;margin-top:48px;" class="reveal">
-      <a href="https://wa.me/919916444888" target="_blank" rel="noopener" class="btn btn-red" style="font-size:15px;padding:18px 48px;">
-        Direct Contact
-      </a>
-    </div>
   </div>
 </section>
 
@@ -2191,6 +2247,16 @@
               <strong>Instagram</strong>
               <a href="https://instagram.com/shinex_carspa" target="_blank" rel="noopener">@shinex_carspa</a>
               &nbsp;· 1987 Followers
+            </div>
+          </div>
+
+          <div class="contact-item reveal reveal-delay-5">
+            <span class="contact-icon">⭐</span>
+            <div class="contact-text">
+              <strong>Google Reviews</strong>
+              <a href="https://www.google.com/search?q=ShineX+Car+Spa+Munnekolala" target="_blank" rel="noopener">ShineX Car Spa</a><br />
+              Car wash · On-site services<br />
+              <span style="color:var(--gray);font-size:13px;">10, 4th A Cross, Shirdi Sai Nagar, Munnekolala, near Krishna Bakery and SBI ATM</span>
             </div>
           </div>
 
@@ -2515,15 +2581,6 @@
     updateArrows();
     resetAuto();
   })();
-
-  // ─── THEME TOGGLE ────────────────────────────────────────────────────────
-  function toggleTheme() {
-    document.body.classList.toggle('light-mode');
-    localStorage.setItem('ft-theme', document.body.classList.contains('light-mode') ? 'light' : 'dark');
-  }
-  if (localStorage.getItem('ft-theme') === 'light') {
-    document.body.classList.add('light-mode');
-  }
 
   /* ── PARTICLES ─────────────────────────────────────────────────────── */
   (function spawnParticles() {
