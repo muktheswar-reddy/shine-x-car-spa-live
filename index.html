@@ -707,7 +707,6 @@
       color: var(--white);
       margin-bottom: 10px;
       letter-spacing: 0.3px;
-      display: none;
     }
 
     .service-desc {
@@ -932,16 +931,17 @@
       top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.95);
       z-index: 9999;
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
+      pointer-events: none;
       transition: opacity 0.3s ease;
     }
 
     .video-modal.show {
-      display: flex;
       opacity: 1;
+      pointer-events: all;
     }
 
     .video-modal-content {
@@ -1211,7 +1211,6 @@
       line-height: 1.7;
     }
     .contact-text strong {
-      color: var(--white);
       display: block;
       font-size: 13px;
       font-weight: 700;
@@ -1513,8 +1512,8 @@
     @media (max-width: 768px) {
       #navbar        { padding: 12px 16px; }
       #navbar.scrolled { padding: 12px 16px; }
-      .nav-logo .ft-logo-img { height: 100px; }
-      #navbar.scrolled .nav-logo .ft-logo-img { height: 80px; }
+      .nav-logo .ft-logo-img { height: 48px; }
+      #navbar.scrolled .nav-logo .ft-logo-img { height: 42px; }
       .nav-links     { display: none; }
       .hamburger     { display: flex; }
 
@@ -1836,7 +1835,7 @@
   </ul>
   <div style="display:flex;align-items:center;gap:10px;">
 
-    <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+    <div class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Open navigation menu" role="button" tabindex="0">
       <span></span><span></span><span></span>
     </div>
   </div>
@@ -2296,7 +2295,7 @@
       desc: 'High-pressure undercarriage washing to clean out salt, mud, and road debris.'
     },
     {
-      src: 'videos/VID-20260620-WA0063.mp4',
+      src: 'videos/VID-20260620-WA0050.mp4',
       tag: 'Engine Detail',
       title: 'Engine Bay Detailing',
       desc: 'Safe, meticulous cleaning and matte conditioning of the engine compartment.'
@@ -2439,23 +2438,35 @@
     }
   }
 
-  // Modal actions
   function openVideoModal(src) {
     const modal = document.getElementById('videoModal');
     const modalVideo = document.getElementById('modalVideo');
     modalVideo.src = src;
     modal.classList.add('show');
-    modalVideo.play();
+    modalVideo.play().catch(() => {});
+    document.body.style.overflow = 'hidden';
   }
 
-  function closeVideoModal(event) {
+  function closeVideoModal(e) {
     const modal = document.getElementById('videoModal');
     const modalVideo = document.getElementById('modalVideo');
+    // Only close if click is on backdrop or close button (not on video itself)
+    if (e && e.target !== modal && !e.target.closest('.video-modal-close')) return;
     modalVideo.pause();
     modalVideo.src = '';
     modal.classList.remove('show');
-    if (event) event.stopPropagation();
+    document.body.style.overflow = '';
   }
+
+  // Close modal on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('videoModal');
+      if (modal.classList.contains('show')) {
+        closeVideoModal({ target: modal });
+      }
+    }
+  });
 </script>
 
 
@@ -2675,7 +2686,7 @@
     </div>
 
     <div class="footer-divider"></div>
-    <p class="footer-copy">© 2025 Shine X Car Spa. All Rights Reserved. &nbsp;·&nbsp; Marathahalli, Bengaluru</p>
+    <p class="footer-copy">© 2026 Shine X Car Spa. All Rights Reserved. &nbsp;·&nbsp; Marathahalli, Bengaluru</p>
 
   </div>
 </footer>
@@ -2799,6 +2810,12 @@
 
   sections.forEach(s => activeObserver.observe(s));
 
+  /* ── CAROUSEL STUB (elements removed — kept for safety) ────────────── */
+  (function initCarousel() {
+    const track = document.getElementById('featTrack');
+    if (!track) return; // carousel not present, exit silently
+  })();
+
   /* ── SMOOTH SCROLL FOR ALL ANCHOR LINKS ─────────────────────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
@@ -2810,132 +2827,6 @@
     });
   });
 
-  /* ── FEATURED SERVICES CAROUSEL ─────────────────────────────────────── */
-  (function initCarousel() {
-    const track    = document.getElementById('featTrack');
-    const wrap     = document.getElementById('featWrap');
-    const dotsBox  = document.getElementById('featDots');
-    const btnPrev  = document.getElementById('featPrev');
-    const btnNext  = document.getElementById('featNext');
-    if (!track) return;
-
-    const cards     = Array.from(track.children);
-    const total     = cards.length;
-    let current     = 0;
-    let autoTimer   = null;
-
-    /* how many cards visible at once based on viewport */
-    function visibleCount() {
-      const w = wrap.offsetWidth;
-      if (w < 560) return 1;
-      if (w < 900) return 2;
-      return 3;
-    }
-
-    /* max index we can slide to */
-    function maxIndex() { return Math.max(0, total - visibleCount()); }
-
-    /* pixel offset for a given index */
-    function offsetFor(idx) {
-      const cardEl   = cards[0];
-      const gap      = 20;
-      const cardW    = cardEl.offsetWidth;
-      return idx * (cardW + gap);
-    }
-
-    /* build / refresh dots */
-    function buildDots() {
-      dotsBox.innerHTML = '';
-      const pages = maxIndex() + 1;
-      for (let i = 0; i < pages; i++) {
-        const d = document.createElement('button');
-        d.className = 'feat-dot' + (i === current ? ' active' : '');
-        d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-        d.addEventListener('click', () => goTo(i));
-        dotsBox.appendChild(d);
-      }
-    }
-
-    function updateDots() {
-      dotsBox.querySelectorAll('.feat-dot').forEach((d, i) => {
-        d.classList.toggle('active', i === current);
-      });
-    }
-
-    function updateArrows() {
-      btnPrev.disabled = current === 0;
-      btnNext.disabled = current >= maxIndex();
-    }
-
-    function goTo(idx) {
-      current = Math.max(0, Math.min(idx, maxIndex()));
-      track.style.transform = `translateX(-${offsetFor(current)}px)`;
-      updateDots();
-      updateArrows();
-      resetAuto();
-    }
-
-    function resetAuto() {
-      clearInterval(autoTimer);
-      autoTimer = setInterval(() => {
-        goTo(current >= maxIndex() ? 0 : current + 1);
-      }, 4500);
-    }
-
-    btnPrev.addEventListener('click', () => goTo(current - 1));
-    btnNext.addEventListener('click', () => goTo(current + 1));
-
-    /* ── Touch / Mouse drag ── */
-    let dragStart = null;
-    let dragging  = false;
-
-    function onDragStart(x) { dragStart = x; dragging = false; }
-    function onDragMove(x)  {
-      if (dragStart === null) return;
-      if (Math.abs(x - dragStart) > 6) {
-        dragging = true;
-        wrap.classList.add('dragging');
-      }
-    }
-    function onDragEnd(x) {
-      if (dragStart === null) return;
-      const diff = dragStart - x;
-      if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
-      dragStart = null;
-      dragging  = false;
-      wrap.classList.remove('dragging');
-    }
-
-    wrap.addEventListener('mousedown',  e => onDragStart(e.clientX));
-    window.addEventListener('mousemove', e => { if (dragStart !== null) onDragMove(e.clientX); });
-    window.addEventListener('mouseup',   e => onDragEnd(e.clientX));
-
-    wrap.addEventListener('touchstart', e => onDragStart(e.touches[0].clientX), { passive: true });
-    wrap.addEventListener('touchmove',  e => onDragMove(e.touches[0].clientX),  { passive: true });
-    wrap.addEventListener('touchend',   e => onDragEnd(e.changedTouches[0].clientX));
-
-    /* prevent clicks on cards firing during drag */
-    wrap.addEventListener('click', e => { if (dragging) e.preventDefault(); }, true);
-
-    /* re-init on resize (card widths change) */
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        current = Math.min(current, maxIndex());
-        track.style.transition = 'none';
-        track.style.transform  = `translateX(-${offsetFor(current)}px)`;
-        requestAnimationFrame(() => { track.style.transition = ''; });
-        buildDots();
-        updateArrows();
-      }, 150);
-    });
-
-    /* init */
-    buildDots();
-    updateArrows();
-    resetAuto();
-  })();
 
   /* ── PARTICLES ─────────────────────────────────────────────────────── */
   (function spawnParticles() {
@@ -2966,14 +2857,6 @@
           btn.classList.add('drop-rest');
         }, { once: true });
       }, 1200);
-    }
-
-    /* --- auto-open popup immediately on load (once per session) --- */
-    if (!sessionStorage.getItem('ft-drop-shown')) {
-      setTimeout(() => {
-        openDrop();
-        sessionStorage.setItem('ft-drop-shown', '1');
-      }, 800);
     }
 
     /* --- countdown to end of current week (Sunday 23:59:59) --- */
